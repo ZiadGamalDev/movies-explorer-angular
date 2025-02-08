@@ -3,31 +3,33 @@ import { CommonModule } from '@angular/common';
 import { RequestsService } from '../core/service/requests.service';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../core/interface/Movie';
+import { RecommendationsComponent } from "./recommendations/recommendations.component";
+import { NotFoundComponent } from "../not-found/not-found.component";
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RecommendationsComponent, NotFoundComponent],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
-  movie: Movie | null = null;
+  movie!: Movie;
 
   constructor(
     private requests: RequestsService,
-    public activatedRoute: ActivatedRoute
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => {
-      const movieId = +params['id'];
-      console.log('Movie ID from URL:', movieId);
+    this.route.paramMap.subscribe((params) => {
+      const movieId = params.get('id');
       if (movieId) {
-        this.getMovieData(movieId);
+        this.getMovieData(+movieId);
       }
     });
   }
+  
 
   getMovieData(id: number) {
     this.requests.getMovieDetails(id).subscribe((res) => {

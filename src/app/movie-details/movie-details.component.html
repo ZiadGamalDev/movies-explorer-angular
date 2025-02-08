@@ -1,16 +1,19 @@
+@if(movie) {
 <div
   class="container movie-card"
   *ngIf="movie"
   [ngStyle]="{
     'background-image':
       'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
-      'https://image.tmdb.org/t/p/w1280/' + movie.backdrop_path + ')'
+      'https://image.tmdb.org/t/p/w1280/' +
+      movie.backdrop_path +
+      ')'
   }"
 >
   <div class="row mt-4">
     <div class="col-md-4">
       <img
-        *ngIf="movie?.poster_path"
+        *ngIf="movie.poster_path"
         [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
         alt="Movie Poster"
         class="movie-poster"
@@ -19,18 +22,18 @@
 
     <div class="col-md-8 movie-details">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 *ngIf="movie?.title" class="movie-title text-light">
+        <h1 *ngIf="movie.title" class="movie-title text-light">
           {{ movie.title }}
         </h1>
-        <i class="fa-regular fa-heart favorite-icon"></i>
+        <i class="fa-regular fa-heart favorite-icon me-5"></i>
       </div>
 
-      <p *ngIf="movie?.release_date" class="release-date">
+      <p *ngIf="movie.release_date" class="release-date">
         {{ movie.release_date }}
       </p>
 
       <div
-        *ngIf="movie?.vote_average !== undefined"
+        *ngIf="movie.vote_average !== undefined"
         class="rating d-flex align-items-center"
       >
         <span *ngFor="let star of getStars(movie.vote_average); let i = index">
@@ -42,26 +45,42 @@
             }"
           ></i>
         </span>
-        <span class="rating-text ms-2">{{ movie.vote_average }} / 10</span>
+        <span class="rating-text ms-2">{{ movie.vote_count }}</span>
       </div>
 
-      <p *ngIf="movie?.overview" class="movie-description">
+      <p *ngIf="movie.overview" class="movie-description">
         {{ movie.overview }}
       </p>
 
-      <div *ngIf="movie?.genres?.length" class="genres">
+      <div *ngIf="movie.genres.length" class="genres">
         <span *ngFor="let genre of movie?.genres" class="badge genre">
-          {{ genre?.name }}
+          {{ genre.name }}
         </span>
       </div>
 
-      <p *ngIf="movie?.runtime" class="movie-info">
+      <p *ngIf="movie.runtime" class="movie-info">
         <strong>Duration:</strong> {{ movie.runtime }} min.
       </p>
 
-      <p *ngIf="movie?.spoken_languages?.length" class="movie-info">
+      <p *ngIf="movie.spoken_languages?.length" class="movie-info">
         <strong>Languages:</strong> {{ movie.spoken_languages[0].name }}
       </p>
     </div>
   </div>
 </div>
+
+<hr class="horizontalRol" />
+
+<div class="container">
+  <app-recommendations
+    *ngIf="movie.id"
+    [movieId]="movie.id"
+  ></app-recommendations>
+</div>
+}@else {
+<app-not-found
+  [message]="
+    '404 - Movie not found with ID: ' + route.snapshot.params['id']
+  "
+></app-not-found>
+}

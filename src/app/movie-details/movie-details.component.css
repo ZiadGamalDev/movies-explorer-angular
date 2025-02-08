@@ -13,7 +13,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .movie-title {
   font-size: 2.7rem;
   font-weight: bold;
@@ -74,4 +73,11 @@
   color: #b3b3b3;
   font-size: 1rem;
   margin-top: 20px;
+}
+
+.horizontalRol {
+  height: 3px;
+  background-color: #b3b3b3;
+  width: 60%;
+  margin: 50px auto;
 }
