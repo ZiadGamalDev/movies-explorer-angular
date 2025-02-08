@@ -13,7 +13,6 @@
   <div class="row mt-4">
     <div class="col-md-4">
       <img
-        *ngIf="movie.poster_path"
         [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
         alt="Movie Poster"
         class="movie-poster"
@@ -22,20 +21,17 @@
 
     <div class="col-md-8 movie-details">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 *ngIf="movie.title" class="movie-title text-light">
+        <h1 class="movie-title text-light">
           {{ movie.title }}
         </h1>
         <i class="fa-regular fa-heart favorite-icon me-5"></i>
       </div>
 
-      <p *ngIf="movie.release_date" class="release-date">
+      <p class="release-date">
         {{ movie.release_date }}
       </p>
 
-      <div
-        *ngIf="movie.vote_average !== undefined"
-        class="rating d-flex align-items-center"
-      >
+      <div class="rating d-flex align-items-center">
         <span *ngFor="let star of getStars(movie.vote_average); let i = index">
           <i
             class="fa"
@@ -45,25 +41,29 @@
             }"
           ></i>
         </span>
-        <span class="rating-text ms-2">{{ movie.vote_count }}</span>
+        <span class="rating-text ms-4">({{ movie.vote_count }}) review</span>
       </div>
 
-      <p *ngIf="movie.overview" class="movie-description">
+      <p class="movie-description">
         {{ movie.overview }}
       </p>
 
-      <div *ngIf="movie.genres.length" class="genres">
+      <div class="genres">
         <span *ngFor="let genre of movie?.genres" class="badge genre">
           {{ genre.name }}
         </span>
       </div>
 
-      <p *ngIf="movie.runtime" class="movie-info">
+      <p class="movie-info">
         <strong>Duration:</strong> {{ movie.runtime }} min.
       </p>
 
-      <p *ngIf="movie.spoken_languages?.length" class="movie-info">
-        <strong>Languages:</strong> {{ movie.spoken_languages[0].name }}
+      <p *ngIf="movie?.spoken_languages?.length" class="movie-info">
+        <strong>Languages:</strong>
+        <span *ngFor="let lang of movie.spoken_languages; let i = index">
+          {{ lang.english_name
+          }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
+        </span>
       </p>
     </div>
   </div>
@@ -72,15 +72,10 @@
 <hr class="horizontalRol" />
 
 <div class="container">
-  <app-recommendations
-    *ngIf="movie.id"
-    [movieId]="movie.id"
-  ></app-recommendations>
+  <app-recommendations [movieId]="movie.id"></app-recommendations>
 </div>
 }@else {
 <app-not-found
-  [message]="
-    '404 - Movie not found with ID: ' + route.snapshot.params['id']
-  "
+  [message]="'404 - Movie not found with ID: ' + route.snapshot.params['id']"
 ></app-not-found>
 }
