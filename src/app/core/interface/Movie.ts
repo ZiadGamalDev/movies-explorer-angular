@@ -9,5 +9,5 @@ export interface Movie {
   vote_count : number;
   genres: { name: string }[];
   overview: string;
-  spoken_languages: { name: string }[];
+  spoken_languages: { english_name: string }[];
 }

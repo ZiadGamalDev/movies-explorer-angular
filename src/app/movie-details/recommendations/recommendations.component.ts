@@ -3,12 +3,13 @@ import { Movie } from '../../core/interface/Movie';
 import { RequestsService } from '../../core/service/requests.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { TruncatePipe } from '../../core/pipe/truncate.pipe';
 
 
 @Component({
   selector: 'app-recommendations',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TruncatePipe],
   templateUrl: './recommendations.component.html',
   styleUrl: './recommendations.component.css',
 })

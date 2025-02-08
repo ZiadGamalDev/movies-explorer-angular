@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="info">
-      <h5>{{ movie.title }}</h5>
+      <h5>{{ movie.title | truncate:15 }}</h5>
       <p class="release-date">{{ movie.release_date }}</p>
     </div>
   </div>
