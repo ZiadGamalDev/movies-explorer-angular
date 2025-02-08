@@ -3,14 +3,14 @@
       <div class="notfound-404">
         <h1>:(</h1>
       </div>
-      <h2>{{'404 - Page not found' }}</h2>
+      <h2>{{ message || '404 - Page not found' }}</h2>
       <p>
         The page you are looking for might have been removed had its name changed
         or is temporarily unavailable.
       </p>
       <a
         class="navbar-brand"
-        routerLink="movie/1247"
+        routerLink="/"
         routerLinkActive="active-Link"
       >
         Home</a

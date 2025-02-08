@@ -1,0 +1,102 @@
+h1 {
+  font-size: 48px;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+
+h1::before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0px;
+  height: 4px;
+  background-color: #666;
+  transition: all ease-in-out .3s;
+}
+
+h1:hover::before {
+  width: 90%;
+}
+
+.recommendations-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  white-space: nowrap;
+  margin-bottom: 50px;
+  scrollbar-width: thin;
+  scrollbar-color: #282828 #121212;
+}
+
+.movie-card {
+  min-width: 200px;
+  height: 390px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+}
+
+.movie-card img:hover {
+  transform: scale(1.1);
+}
+
+.movie-card h5 {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.rating-circle {
+  position: absolute;
+  bottom: 18%;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+}
+
+.rating-circle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.rating-circle circle {
+  transition: all 0.5s ease-in-out;
+}
+
+.info {
+  padding: 30px 0px 20px 0px;
+}
+
+h5 {
+  margin: 15px 0 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.release-date {
+  font-size: 12px;
+  color: #666;
+  text-align: left;
+}

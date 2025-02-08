@@ -1,0 +1,30 @@
+<h1>Recommendations</h1>
+<div class="recommendations-container">
+  <div class="movie-card" *ngFor="let movie of recommendations">
+    <div class="poster">
+      <i (click)="navigateToMovieDetail(movie.id)" style="cursor: pointer;">
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" />
+      </i>
+      <div class="rating-circle">
+        <svg width="40" height="40">
+          <circle cx="20" cy="20" r="18" stroke="#444" stroke-width="4" fill="none"></circle>
+          <circle 
+            cx="20" 
+            cy="20" 
+            r="18" 
+            stroke="#4caf50" 
+            stroke-width="3" 
+            fill="none"
+            stroke-dasharray="113"
+            [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"
+          ></circle>
+        </svg>
+        <span>{{ (movie.vote_average * 10) | number: '1.0-0' }}%</span>
+      </div>
+    </div>
+    <div class="info">
+      <h5>{{ movie.title }}</h5>
+      <p class="release-date">{{ movie.release_date }}</p>
+    </div>
+  </div>
+</div>
