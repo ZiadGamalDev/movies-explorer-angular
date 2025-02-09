@@ -5,11 +5,12 @@ import { Movie } from '../core/interface/Movie';
 import { Router, RouterLink } from '@angular/router';
 import { TruncatePipe } from "../core/pipe/truncate.pipe";
 import { DatePipe, SlicePipe } from '@angular/common';
+import { RatingStarsPipe } from '../pipe/rating-stars.pipe';
 
 
 @Component({
   selector: 'app-wishlist',
-  imports: [TruncatePipe, DatePipe,RouterLink,SlicePipe],
+  imports: [TruncatePipe, DatePipe,RouterLink,SlicePipe,RatingStarsPipe],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })
