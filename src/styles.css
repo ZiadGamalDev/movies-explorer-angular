@@ -21,10 +21,12 @@ body::-webkit-scrollbar-track {
   background-color: #198754 !important;
   color: white !important;
   box-shadow: none !important;
+  width: 500px !important;
 }
 
 .custom-toast2 {
   box-shadow: none !important;
+  width: 500px !important;
 }
 
 ::selection {
