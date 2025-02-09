@@ -19,10 +19,35 @@
   margin: 15px 0px;
 }
 
-.favorite-icon {
+/* .favorite-icon {
   font-size: 2rem;
   color: #ffd700;
   cursor: pointer;
+} */
+
+.favorite-icon {
+  transition: transform 0.2s ease;
+  font-size: 2rem;
+  color: #ffd700;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.fa-solid {
+    animation: heartBeat 0.3s ease-in-out;
+  }
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .release-date {
