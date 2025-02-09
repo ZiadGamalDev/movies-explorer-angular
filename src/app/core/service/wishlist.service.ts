@@ -28,7 +28,8 @@ export class WishlistService {
       this.updateWishlist();
       this._ToastrService.success(
         `${movie.title} added to wishlist`,
-        'Success'
+        'Success',
+        { toastClass: 'ngx-toastr custom-toast1' }
       );
     }
   }
@@ -40,7 +41,11 @@ export class WishlistService {
       (item) => item.id !== movieId
     );
     this.updateWishlist();
-    this._ToastrService.info(`${movie.title} removed from wishlist`, 'Removed');
+    this._ToastrService.info(
+      `${movie.title} removed from wishlist`,
+      'Removed',
+      { toastClass: 'ngx-toastr custom-toast2' }
+    );
   }
 
   isInWishlist(movieId: number): boolean {
