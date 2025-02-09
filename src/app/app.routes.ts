@@ -9,7 +9,7 @@ export const routes: Routes = [
     title: 'Movie Details',
   },
   {
-    path: '',
+    path: '**',
     component: NotFoundComponent,
     title: 'Not-Found',
   },
