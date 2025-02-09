@@ -10,7 +10,7 @@ import { RatingStarsPipe } from '../pipe/rating-stars.pipe';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [TruncatePipe, DatePipe,RouterLink,SlicePipe,RatingStarsPipe],
+  imports: [ DatePipe,RouterLink,SlicePipe,RatingStarsPipe],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })

@@ -8,7 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 export class WishlistService {
   private wishlistItems: Movie[] = [];
   private wishlistSubject = new BehaviorSubject<Movie[]>([]);
-
+  private watchListCount=new BehaviorSubject<number>(0);
+  watchListCount$ = this.watchListCount.asObservable();
+  
   constructor(private _ToastrService: ToastrService) {
     const savedWishlist = localStorage.getItem('movieWishlist');
 
@@ -23,6 +25,7 @@ export class WishlistService {
   }
 
   addToWishlist(movie: Movie): void {
+    
     if (!this.wishlistItems.some((item) => item.id === movie.id)) {
       this.wishlistItems.push(movie);
       this.updateWishlist();
@@ -52,8 +55,10 @@ export class WishlistService {
     return this.wishlistItems.some((item) => item.id === movieId);
   }
 
+ 
   private updateWishlist(): void {
     this.wishlistSubject.next(this.wishlistItems);
     localStorage.setItem('movieWishlist', JSON.stringify(this.wishlistItems));
+    this.watchListCount.next(this.wishlistItems.length);
   }
 }

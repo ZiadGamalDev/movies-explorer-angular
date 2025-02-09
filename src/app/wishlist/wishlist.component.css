@@ -6,22 +6,18 @@
     color: #121212;
   }
   
-  .truncate-overview {
+  /* .truncate-overview {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+  } */
   .watch-poster{
     border-radius: 27px;
     transition: transform 0.3s ease;
     padding-left: 5px;
   }
-  /* .watch-poster:hover{
-    transform: scale(1.02);
-    cursor: pointer;
-  } */
   .movie-card{
     padding: 20px;
   }
