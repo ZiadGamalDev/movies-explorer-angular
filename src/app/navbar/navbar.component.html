@@ -1,0 +1,49 @@
+<!-- navbar.component.html -->
+<nav class="navbar navbar-expand-lg bg-warning">
+  <div class="container-fluid">
+    <!-- App Title/Logo -->
+    <a class="navbar-brand ms-3" routerLink="/home"
+      ><img
+        src="../../assets/logo.png"
+        class="navbar-logo"
+        alt="logo"
+    /></a>
+   
+    <!-- Right-aligned items -->
+    <div class="ms-auto d-flex align-items-center">
+      <!-- Language Selector -->
+      <div class="dropdown">
+        <button
+          class="btn btn-warning dropdown-toggle"
+          type="button"
+          id="languageDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          En
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+          <li><a class="dropdown-item" href="#">En</a></li>
+          <li><a class="dropdown-item" href="#">Es</a></li>
+          <li><a class="dropdown-item" href="#">Fr</a></li>
+        </ul>
+      </div>
+
+      <!-- Wishlist Link -->
+
+      <div class="wish-list mx-5 d-flex align-items-center gap-3">
+        <a routerLink="/wishlist">
+          <img src="../../assets/heart.png" alt="wishlist" />
+        </a>
+
+        <a
+          class="nav-link text-dark fw-bold text-decoration-none"
+          routerLinkActive="active-link"
+          routerLink="/wishlist"
+        >
+          Wishlist
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

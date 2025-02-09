@@ -24,7 +24,11 @@
         <h1 class="movie-title text-light">
           {{ movie.title }}
         </h1>
-        <i class="fa-regular fa-heart favorite-icon me-5"></i>
+        <i
+          [class]="heartIconClass"
+          (click)="toggleWishlist()"
+          [style.cursor]="'pointer'"
+        ></i>
       </div>
 
       <p class="release-date">
