@@ -13,6 +13,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(),
     provideAnimations(),
-    provideToastr(),
+    provideToastr({
+      tapToDismiss: true,
+      closeButton: true,
+      newestOnTop: true,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+    }),
   ],
 };
