@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="mb-4 p-4 bg-dark rounded text-light">
+    <h2>Welcome to our movie app</h2>
+    <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+    <div class="d-flex justify-content-between">
+      <input type="text" class="form-control" placeholder="Search movies..." />
+      <button class="btn btn-warning ms-2">Search</button>
+    </div>
+  </div>
+
+  <h2>Now Playing</h2>
+  <div class="row row-cols-2 row-cols-md-4 g-3">
+    @for (movie of movies; track movie.id) {
+    <div class="col">
+      <div class="card h-100 bg-transparent">
+        <div class="position-relative">
+          <img
+            [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+            class="card-img-top"
+            alt="Movie Poster"
+            style="height: 250px; object-fit: cover"
+            [routerLink]="['/movie', movie.id]"
+            style="cursor: pointer"
+          />
+          <div class="rating-circle position-absolute">
+            <svg width="40" height="40">
+              <circle
+                cx="20"
+                cy="20"
+                r="18"
+                stroke="#444"
+                stroke-width="4"
+                fill="none"
+              ></circle>
+              <circle
+                cx="20"
+                cy="20"
+                r="18"
+                stroke="#4caf50"
+                stroke-width="3"
+                fill="none"
+                stroke-dasharray="113"
+                [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"
+              ></circle>
+            </svg>
+            <span>{{ movie.vote_average * 10 | number : "1.0-0" }}%</span>
+          </div>
+        </div>
+        <div class="card-body text-center bg-transparent text-light">
+          <h6 class="card-title fw-bold">{{ movie.title }}</h6>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="small m-0">{{ movie.release_date }}</p>
+            <i
+              class="fa-heart"
+              [class.fa-regular]="true"
+              [class.fa-solid]="true"
+              [class.text-warning]="true"
+              style="cursor: pointer"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a
+          class="page-link pagination-link bg-transparent"
+          (click)="goToPage(currentPage - 1)"
+          >&lt;</a
+        >
+      </li>
+      @for (page of getPaginationPages(); track page) {
+      <li class="page-item mx-1" [class.active]="currentPage === page">
+        <a
+          class="page-link pagination-link bg-transparent"
+          (click)="goToPage(page)"
+          style="cursor: pointer"
+          >{{ page }}</a
+        >
+      </li>
+      }
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a
+          class="page-link pagination-link bg-transparent"
+          (click)="goToPage(currentPage + 1)"
+          >&gt;</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
