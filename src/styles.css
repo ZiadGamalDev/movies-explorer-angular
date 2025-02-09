@@ -1,23 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 body {
   background-color: #121212;
   color: #ffffff;
   font-family: Arial, sans-serif;
-}
-
-.custom-toast1 {
-  background-color: #ffc107 !important;
-  color: white !important;
-  box-shadow: none !important;
-}
-
-.custom-toast2 {
-  box-shadow: none !important;
-}
-
-::selection {
-  background-color: #ffc107;
-  color: #ffffff;
 }
 
 body::-webkit-scrollbar {
@@ -31,4 +15,19 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
   background: #ffc107;
+}
+
+.custom-toast1 {
+  background-color: #198754 !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.custom-toast2 {
+  box-shadow: none !important;
+}
+
+::selection {
+  background-color: #ffc107;
+  color: #ffffff;
 }
