@@ -1,7 +1,7 @@
 @if(movie) {
+<app-up-to-top></app-up-to-top>
 <div
   class="container movie-card"
-  *ngIf="movie"
   [ngStyle]="{
     'background-image':
       'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
@@ -53,22 +53,64 @@
       </p>
 
       <div class="genres">
-        <span *ngFor="let genre of movie?.genres" class="badge genre">
+        <span *ngFor="let genre of movie.genres" class="badge genre">
           {{ genre.name }}
         </span>
       </div>
 
-      <p class="movie-info">
-        <strong>Duration:</strong> {{ movie.runtime }} min.
-      </p>
+      <div class="d-flex align-content-center justify-content-start gap-5">
+        <p class="movie-info">
+          <strong>Duration:</strong>
+          <span class="text-white-50 ms-1">{{ movie.runtime }} min.</span>
+        </p>
 
-      <p *ngIf="movie?.spoken_languages?.length" class="movie-info">
-        <strong>Languages:</strong>
-        <span *ngFor="let lang of movie.spoken_languages; let i = index">
-          {{ lang.english_name
-          }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
-        </span>
-      </p>
+        <p class="movie-info">
+          <strong>Languages:</strong>
+          <span
+            class="text-white-50"
+            *ngFor="let lang of movie.spoken_languages; let i = index"
+          >
+            {{ lang.english_name
+            }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
+          </span>
+        </p>
+      </div>
+      <div class="d-flex gap-4 my-3">
+        <ng-container *ngFor="let company of movie.production_companies">
+          <img
+            *ngIf="company.logo_path !== null"
+            [src]="'https://image.tmdb.org/t/p/w500' + company.logo_path"
+            alt="Company Logo"
+            width="auto"
+            height="40px"
+            style="
+              object-fit: contain;
+              background-color: #ffd700;
+              padding: 5px;
+              border-radius: 4px;
+            "
+          />
+        </ng-container>
+      </div>
+      <div class="my-5">
+        <a [href]="movie.homepage" class="genre text-decoration-none"
+          >Website
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-link-45deg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"
+            />
+            <path
+              d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"
+            /></svg
+        ></a>
+      </div>
     </div>
   </div>
 </div>

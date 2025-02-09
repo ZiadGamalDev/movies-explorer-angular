@@ -1,0 +1,70 @@
+.card img {
+  border-radius: 15px;
+  transition: all ease-in-out .3s;
+}
+
+.card-body {
+  padding-top: 40px;
+}
+
+.card-title {
+  font-size: 20px;
+  text-align: left;
+}
+
+.pagination-link {
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.pagination-link:hover {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-radius: 5px;
+}
+
+.page-item.mx-1 {
+  margin: 0 5px;
+}
+
+.rating-circle {
+  position: absolute;
+  bottom: -30px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+}
+
+.rating-circle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.rating-circle circle {
+  transition: all 0.5s ease-in-out;
+}
+
+.favorite-icon {
+  transition: transform 0.2s ease;
+  font-size: 2rem;
+  color: #ffd700;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.fa-solid {
+    animation: heartBeat 0.3s ease-in-out;
+  }
+}

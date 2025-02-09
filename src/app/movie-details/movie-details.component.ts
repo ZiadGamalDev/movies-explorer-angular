@@ -6,11 +6,12 @@ import { Movie } from '../core/interface/Movie';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { WishlistService } from '../core/service/wishlist.service';
+import { UpToTopComponent } from "../up-to-top/up-to-top.component";
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule, RecommendationsComponent, NotFoundComponent],
+  imports: [CommonModule, RecommendationsComponent, NotFoundComponent, UpToTopComponent],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })

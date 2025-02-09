@@ -19,12 +19,6 @@
   margin: 15px 0px;
 }
 
-/* .favorite-icon {
-  font-size: 2rem;
-  color: #ffd700;
-  cursor: pointer;
-} */
-
 .favorite-icon {
   transition: transform 0.2s ease;
   font-size: 2rem;
@@ -60,7 +54,7 @@
   align-items: center;
   font-size: 1.2rem;
   color: #ffcc00;
-  margin: 40px 0px 20px 0px;
+  margin: 20px 0px 20px 0px;
 }
 
 .rating i {
@@ -95,7 +89,7 @@
 }
 
 .movie-info {
-  color: #b3b3b3;
+  color: #e1e1e1;
   font-size: 1rem;
   margin-top: 20px;
 }

@@ -21,4 +21,10 @@ export class RequestsService {
       `${environment.baseURL}/${movieId}/recommendations?api_key=${environment.apiKey}`
     );
   }
+
+  getNowPlayingMovies(page: number): Observable<any> {
+    return this.http.get<Movie>(
+      `${environment.baseURL}/now_playing?api_key=${environment.apiKey}&page=${page}`
+    );
+  }
 }

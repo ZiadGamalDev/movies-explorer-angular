@@ -8,6 +8,8 @@ export interface Movie {
   vote_average: number;
   vote_count : number;
   genres: { name: string }[];
+  production_companies: { logo_path : string }[];
+  homepage: string;
   overview: string;
   spoken_languages: { english_name: string }[];
 }
