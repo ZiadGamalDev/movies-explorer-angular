@@ -1,0 +1,42 @@
+.pagination-link {
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.pagination-link:hover {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-radius: 5px;
+}
+
+.page-item.mx-1 {
+  margin: 0 5px;
+}
+
+.rating-circle {
+  position: absolute;
+  bottom: -20px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+}
+
+.rating-circle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.rating-circle circle {
+  transition: all 0.5s ease-in-out;
+}
