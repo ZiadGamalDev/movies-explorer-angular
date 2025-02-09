@@ -15,7 +15,7 @@ export class NavbarComponent {
   constructor(private wishService:WishlistService) { }
   ngOnInit(): void {
     this.wishService.watchListCount$.subscribe(count => this.watchCount=count);
-
+  }
   isScrolled = false;
 
   @HostListener('window:scroll', [])
