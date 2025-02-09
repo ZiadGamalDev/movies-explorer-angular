@@ -5,10 +5,11 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TruncatePipe } from '../core/pipe/truncate.pipe';
 import { WishlistService } from '../core/service/wishlist.service';
+import { UpToTopComponent } from "../up-to-top/up-to-top.component";
 
 @Component({
   selector: 'app-movies',
-  imports: [RouterModule, CommonModule, TruncatePipe],
+  imports: [RouterModule, CommonModule, TruncatePipe, UpToTopComponent],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
 })
