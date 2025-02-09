@@ -39,8 +39,13 @@
                                   [style.cursor]="'pointer'"
                                 ></i>
                               </div>
+
                          
                           <p class="card-text text-white"><small class=" text-white-50 ">{{ movie.release_date| date:'mediumDate' }}</small></p>
+                          <div>
+                              <span [innerHTML]="movie.vote_average | ratingStars" class="small"></span>
+                               <span class="small text-white-50 ms-1">({{movie.vote_count}}) reviews</span>
+                          </div>
                           <p class=" text-white">{{movie.overview | slice:0:100 }}...</p>
                         </div>
                       </div>
