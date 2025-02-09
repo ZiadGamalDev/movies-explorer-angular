@@ -58,28 +58,39 @@
         </span>
       </div>
 
-      <div class="d-flex align-content-center justify-content-between w-50">
+      <div class="d-flex align-content-center justify-content-start gap-5">
         <p class="movie-info">
-          <strong>Duration:</strong> {{ movie.runtime }} min.
+          <strong>Duration:</strong>
+          <span class="text-white-50 ms-1">{{ movie.runtime }} min.</span>
         </p>
 
         <p class="movie-info">
           <strong>Languages:</strong>
-          <span *ngFor="let lang of movie.spoken_languages; let i = index">
+          <span
+            class="text-white-50"
+            *ngFor="let lang of movie.spoken_languages; let i = index"
+          >
             {{ lang.english_name
             }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
           </span>
         </p>
       </div>
       <div class="d-flex gap-4 my-3">
-        <img
-          *ngFor="let company of movie.production_companies"
-          [src]="'https://image.tmdb.org/t/p/w500' + company.logo_path"
-          alt="Company Logo"
-          width="auto"
-          height="40px"
-          style="object-fit: contain"
-        />
+        <ng-container *ngFor="let company of movie.production_companies">
+          <img
+            *ngIf="company.logo_path !== null"
+            [src]="'https://image.tmdb.org/t/p/w500' + company.logo_path"
+            alt="Company Logo"
+            width="auto"
+            height="40px"
+            style="
+              object-fit: contain;
+              background-color: #ffd700;
+              padding: 5px;
+              border-radius: 4px;
+            "
+          />
+        </ng-container>
       </div>
       <div class="my-5">
         <a [href]="movie.homepage" class="genre text-decoration-none"
