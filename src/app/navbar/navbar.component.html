@@ -1,5 +1,5 @@
 <!-- navbar.component.html -->
-<nav class="navbar navbar-expand-lg bg-warning">
+<nav class="navbar navbar-expand-lg bg-warning" [ngClass]="{ scrolled: isScrolled }">
   <div class="container-fluid">
     <!-- App Title/Logo -->
     <a class="navbar-brand ms-3" routerLink="/home"
