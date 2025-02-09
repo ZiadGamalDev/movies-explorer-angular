@@ -1,5 +1,20 @@
+.card img {
+  border-radius: 15px;
+  transition: all ease-in-out .3s;
+}
+
+.card-body {
+  padding-top: 40px;
+}
+
+.card-title {
+  font-size: 20px;
+  text-align: left;
+}
+
 .pagination-link {
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
   cursor: pointer;
   border: none;
 }
@@ -16,10 +31,10 @@
 
 .rating-circle {
   position: absolute;
-  bottom: -20px;
+  bottom: -30px;
   left: 15px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,4 +54,17 @@
 
 .rating-circle circle {
   transition: all 0.5s ease-in-out;
+}
+
+.favorite-icon {
+  transition: transform 0.2s ease;
+  font-size: 2rem;
+  color: #ffd700;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.fa-solid {
+    animation: heartBeat 0.3s ease-in-out;
+  }
 }
