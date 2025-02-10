@@ -16,6 +16,7 @@
 .movie-card {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
 }
 
 img {
@@ -28,6 +29,12 @@ img {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   
   transform: scale(1.02);
+}
+
+.movie-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .favorite-icon {
