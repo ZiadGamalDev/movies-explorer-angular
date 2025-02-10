@@ -3,6 +3,10 @@
   transition: all ease-in-out .3s;
 }
 
+.card img:hover {
+  transform: scale(1.03);
+}
+
 .card-body {
   padding-top: 40px;
 }
