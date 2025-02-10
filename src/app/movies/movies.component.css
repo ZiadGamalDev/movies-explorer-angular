@@ -29,6 +29,12 @@
   border-radius: 5px;
 }
 
+.page-item.active .page-link {
+  background-color: #ffc107 !important;
+  color: #fff !important;
+  border-radius: 5px;
+}
+
 .page-item.mx-1 {
   margin: 0 5px;
 }

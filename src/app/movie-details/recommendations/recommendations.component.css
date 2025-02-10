@@ -3,6 +3,7 @@ h1 {
   position: relative;
   width: fit-content;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 h1::before {
@@ -12,7 +13,7 @@ h1::before {
   left: 0px;
   width: 0px;
   height: 4px;
-  background-color: #666;
+  background-color: #ffd701;
   transition: all ease-in-out .3s;
 }
 
