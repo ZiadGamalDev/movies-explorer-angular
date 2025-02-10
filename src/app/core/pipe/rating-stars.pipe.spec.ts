@@ -1,4 +1,4 @@
-import { RatingStarsPipe } from './rating-stars.pipe';
+import { RatingStarsPipe } from '../../pipe/rating-stars.pipe';
 
 describe('RatingStarsPipe', () => {
   it('create an instance', () => {

@@ -6,12 +6,19 @@ import { Movie } from '../core/interface/Movie';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { WishlistService } from '../core/service/wishlist.service';
-import { UpToTopComponent } from "../up-to-top/up-to-top.component";
+import { UpToTopComponent } from '../up-to-top/up-to-top.component';
+import { RatingStarsPipe } from '../core/pipe/rating-stars.pipe';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule, RecommendationsComponent, NotFoundComponent, UpToTopComponent],
+  imports: [
+    CommonModule,
+    RecommendationsComponent,
+    NotFoundComponent,
+    UpToTopComponent,
+    RatingStarsPipe
+  ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
@@ -53,12 +60,5 @@ export class MovieDetailsComponent {
       this._wishlistService.addToWishlist(this.movie);
     }
     this.isInWishlist = !this.isInWishlist;
-  }
-  getStars(voteAverage?: number): number[] {
-    if (voteAverage === undefined || voteAverage === null) {
-      return [];
-    }
-    const fullStars = Math.round(voteAverage / 2);
-    return Array.from({ length: 5 }, (_, i) => (i < fullStars ? 1 : 0));
   }
 }

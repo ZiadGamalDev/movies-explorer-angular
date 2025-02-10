@@ -57,7 +57,7 @@
               {{ movie.title | truncate : 20 }}
             </h6>
             <p class="text-white-50" style="text-align: left">
-              {{ movie.release_date }}
+              {{ movie.release_date | date : "mediumDate" }}
             </p>
           </div>
           <i

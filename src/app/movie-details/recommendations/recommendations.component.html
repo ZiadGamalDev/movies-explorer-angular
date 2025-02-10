@@ -24,7 +24,7 @@
     </div>
     <div class="info">
       <h5>{{ movie.title | truncate:15 }}</h5>
-      <p class="release-date">{{ movie.release_date }}</p>
+      <p class="release-date">{{ movie.release_date | date : "mediumDate" }}</p>
     </div>
   </div>
 </div>
