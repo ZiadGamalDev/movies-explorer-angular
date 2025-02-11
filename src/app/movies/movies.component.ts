@@ -144,7 +144,7 @@ export class MoviesComponent implements OnInit {
 
   getPaginationPages(): number[] {
     let pages: number[] = [];
-    const totalToShow = 5; // Max number of pages to display
+    const totalToShow = 5;
     let start = Math.max(1, this.currentPage - Math.floor(totalToShow / 2));
     let end = Math.min(this.totalPages, start + totalToShow - 1);
 
