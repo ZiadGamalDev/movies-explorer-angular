@@ -11,6 +11,8 @@ import { LanguagesService } from '../core/service/languages.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  watchCount = 0;
+  constructor(private wishService: WishlistService) {}
   isScrolled = false;
   watchCount = 0;
   selectedLanguage: string = 'English (en-US)';

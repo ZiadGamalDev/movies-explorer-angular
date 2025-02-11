@@ -5,9 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../core/interface/Movie';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
-import { WishlistService } from '../core/service/wishlist.service';
 import { UpToTopComponent } from '../up-to-top/up-to-top.component';
 import { RatingStarsPipe } from '../core/pipe/rating-stars.pipe';
+import { WishlistService } from '../core/service/wishlist.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -17,7 +17,7 @@ import { RatingStarsPipe } from '../core/pipe/rating-stars.pipe';
     RecommendationsComponent,
     NotFoundComponent,
     UpToTopComponent,
-    RatingStarsPipe
+    RatingStarsPipe,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
