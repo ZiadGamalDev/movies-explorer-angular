@@ -18,9 +18,9 @@
       <button class="btn back-to-home-btn" (click)="navigateToHome()">Back to home</button>
     </div>
     } @for(movie of movies; track movie.id){
-    <div class="col-md-6 movie-card g-4">
+    <div class="col-md-12 col-lg-6 col-sm-12 col-12 movie-card g-4">
       <div [routerLink]="['/movie', movie.id]" class="card p-2 rounded-4 bg-black">
-        <div class="d-flex">
+        <div class="row">
           <div class="col-md-4">
             <a [routerLink]="['/movie', movie.id]">
               <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="img-fluid watch-poster"
