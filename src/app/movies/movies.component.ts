@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { TruncatePipe } from '../core/pipe/truncate.pipe';
 import { WishlistService } from '../core/service/wishlist.service';
 import { UpToTopComponent } from '../up-to-top/up-to-top.component';
+import { LanguagesService } from '../core/service/languages.service';
 
 @Component({
   selector: 'app-movies',
@@ -21,29 +22,44 @@ import { UpToTopComponent } from '../up-to-top/up-to-top.component';
   styleUrls: ['./movies.component.css'],
 })
 export class MoviesComponent implements OnInit {
-  movies: Movie[] = []; // if no text in the search input
-  filteredMovies: Movie[] = []; // if there is a text in the search input
+  movies: Movie[] = [];
+  filteredMovies: Movie[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
+  isInWishlist: boolean = false;
+  selectedLanguage: string = 'en-US';
   searchTerm: string = '';
 
   constructor(
     private requests: RequestsService,
-    private _wishlistService: WishlistService
+    private _wishlistService: WishlistService,
+    private languageService: LanguagesService
   ) {}
 
   ngOnInit() {
+    this.languageService.currentLanguage$.subscribe((lang) => {
+      this.selectedLanguage = lang;
+      this.fetchMoviesWithLanguage();
+    });
+
     this.fetchMovies();
   }
 
   fetchMovies() {
     this.requests.getNowPlayingMovies(this.currentPage).subscribe((res) => {
       this.movies = res.results;
-      this.filteredMovies = res.results; // Initialize filteredMovies with all movies
+      this.filteredMovies = res.results;
       this.totalPages = res.total_pages;
     });
   }
 
+  fetchMoviesWithLanguage() {
+    this.requests.getMoviesWithLanguages(this.selectedLanguage).subscribe((res) => {
+      this.movies = res.results;
+      this.filteredMovies = [...this.movies];
+    });
+  }
+      
   filterMovies() {
     this.currentPage = 1;
     const term = this.searchTerm.trim();
@@ -54,7 +70,7 @@ export class MoviesComponent implements OnInit {
         this.totalPages = res.total_pages;
       });
     } else {
-      this.fetchMovies();
+      this.filteredMovies = [...this.movies];
     }
   }
 

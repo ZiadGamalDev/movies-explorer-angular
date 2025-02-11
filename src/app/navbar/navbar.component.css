@@ -23,3 +23,7 @@
   left: 16.5%;
   border-radius: 10px;
 }
+
+ul li a {
+  cursor: pointer;
+}

@@ -1,5 +1,8 @@
 <!-- navbar.component.html -->
-<nav class="navbar navbar-expand-lg bg-warning fixed-top" [ngClass]="{ scrolled: isScrolled }">
+<nav
+  class="navbar navbar-expand-lg bg-warning fixed-top"
+  [ngClass]="{ scrolled: isScrolled }"
+>
   <div class="container-fluid">
     <!-- App Title/Logo -->
     <a class="navbar-brand ms-3" routerLink="/">
@@ -31,26 +34,51 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            En
+            {{ selectedLanguage }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href="#">En</a></li>
-            <li><a class="dropdown-item" href="#">Es</a></li>
-            <li><a class="dropdown-item" href="#">Fr</a></li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('en-US')"
+                >English (en-US)</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('es-ES')"
+                >ESpanish (es-ES)</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('fr-FR')"
+                >French (fr-FR)</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('ar-EG')"
+                >Arabic (ar-EG)</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('zh-CN')"
+                >Chinese (zh-CN)</a
+              >
+            </li>
           </ul>
         </div>
 
-
- 
-
         <!-- Wishlist Link -->
-        <div class="wish-list pb-3 d-flex align-items-center gap-3 mt-3 mt-lg-0 mx-lg-5">
+        <div
+          class="wish-list pb-3 d-flex align-items-center gap-3 mt-3 mt-lg-0 mx-lg-5"
+        >
           <a
             routerLink="/wishlist"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
           >
-            <img src="../../assets/heart.png" alt="wishlist" class="wishlist-icon" />
+            <img
+              src="../../assets/heart.png"
+              alt="wishlist"
+              class="wishlist-icon"
+            />
           </a>
           <a
             class="nav-link text-dark fw-bold text-decoration-none"
@@ -59,10 +87,13 @@
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
           >
-            Watchlist <span class="badge bg-dark rounded-4 postion-absolute start-100 translate-middle ms-2">{{watchCount}}</span>
+            Watchlist
+            <span
+              class="badge bg-dark rounded-4 postion-absolute start-100 translate-middle ms-2"
+              >{{ watchCount }}</span
+            >
           </a>
         </div>
-
       </div>
     </div>
   </div>
