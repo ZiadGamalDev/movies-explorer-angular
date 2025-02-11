@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RequestsService } from '../core/service/requests/requests.service';
+import { RequestsService } from '../core/service/requests.service';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../core/interface/Movie';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { UpToTopComponent } from '../up-to-top/up-to-top.component';
 import { RatingStarsPipe } from '../core/pipe/rating-stars.pipe';
-import { WishlistService } from '../core/service/wishlist/wishlist.service';
+import { WishlistService } from '../core/service/wishlist.service';
 
 @Component({
   selector: 'app-movie-details',

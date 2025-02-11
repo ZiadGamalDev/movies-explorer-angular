@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { WishlistService } from '../core/service/wishlist/wishlist.service';
+import { WishlistService } from '../core/service/wishlist.service';
 
 @Component({
   selector: 'app-navbar',

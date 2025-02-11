@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Movie } from '../../interface/Movie';
+import { Movie } from '../interface/Movie';
 @Injectable({
   providedIn: 'root',
 })
