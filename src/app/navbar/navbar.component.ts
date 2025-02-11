@@ -14,6 +14,7 @@ export class NavbarComponent {
   watchCount = 0;
   isScrolled = false;
   selectedLanguage: string = 'English (en-US)';
+  isSidebarOpen: boolean = false;
 
   constructor(
     private wishService: WishlistService,
@@ -33,6 +34,10 @@ export class NavbarComponent {
     } else {
       this.isScrolled = false;
     }
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   changeLanguage(language: string) {

@@ -29,6 +29,7 @@ export class MoviesComponent implements OnInit {
   isInWishlist: boolean = false;
   selectedLanguage: string = 'en-US';
   searchTerm: string = '';
+  isLoading: boolean = true; // Add the isLoading variable
 
   constructor(
     private requests: RequestsService,
@@ -46,24 +47,42 @@ export class MoviesComponent implements OnInit {
   }
 
   fetchMovies() {
-    this.requests.getNowPlayingMovies(this.currentPage).subscribe((res) => {
-      this.movies = res.results;
-      this.filteredMovies = res.results;
-      this.totalPages = res.total_pages;
-    });
+    this.isLoading = true; // Start loading
+    this.searchTerm = '';
+    this.requests.getNowPlayingMovies(this.currentPage).subscribe(
+      (res) => {
+        this.movies = res.results;
+        this.filteredMovies = res.results;
+        this.totalPages = res.total_pages;
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
+      },
+      (error) => {
+        console.error(error);
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
+      }
+    );
   }
 
   fetchMoviesWithLanguage() {
+    this.isLoading = true;
     this.requests
       .getMoviesWithLanguages(this.selectedLanguage)
       .subscribe((res) => {
         this.movies = res.results;
         this.filteredMovies = [...this.movies];
         console.log(this.filteredMovies);
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
       });
   }
 
   filterMovies() {
+    this.isLoading = true;
     this.currentPage = 1;
     const term = this.searchTerm.trim();
 
@@ -72,8 +91,14 @@ export class MoviesComponent implements OnInit {
         this.filteredMovies = res.results;
         this.totalPages = res.total_pages;
       });
+      setTimeout(() => {
+        this.isLoading = false; // End loading on error
+      }, 500);
     } else {
       this.filteredMovies = [...this.movies];
+      setTimeout(() => {
+        this.isLoading = false; // End loading on error
+      }, 500);
     }
   }
 
