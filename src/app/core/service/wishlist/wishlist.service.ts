@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Movie } from './../interface/Movie';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { Movie } from '../../interface/Movie';
 @Injectable({
   providedIn: 'root',
 })
 export class WishlistService {
-  private wishlistItems: Movie[] = []; 
-  private wishlistSubject = new BehaviorSubject<Movie[]>([]); 
-  private watchListCount = new BehaviorSubject<number>(0); 
-  watchListCount$ = this.watchListCount.asObservable(); 
+  private wishlistItems: Movie[] = [];
+  private wishlistSubject = new BehaviorSubject<Movie[]>([]);
+  private watchListCount = new BehaviorSubject<number>(0);
+  watchListCount$ = this.watchListCount.asObservable();
 
   constructor(private _ToastrService: ToastrService) {
-   
     const savedWishlist = localStorage.getItem('movieWishlist');
     const savedCount = localStorage.getItem('watchListCount'); // Retrieve saved count
 
@@ -21,18 +20,19 @@ export class WishlistService {
       this.wishlistSubject.next(this.wishlistItems);
     }
 
-    
-    this.watchListCount.next(savedCount ? JSON.parse(savedCount) : this.wishlistItems.length);
+    this.watchListCount.next(
+      savedCount ? JSON.parse(savedCount) : this.wishlistItems.length
+    );
   }
 
   getWishlist(): Observable<Movie[]> {
-    return this.wishlistSubject.asObservable(); 
+    return this.wishlistSubject.asObservable();
   }
 
   addToWishlist(movie: Movie): void {
     if (!this.wishlistItems.some((item) => item.id === movie.id)) {
       this.wishlistItems.push(movie);
-      this.updateWishlist(); 
+      this.updateWishlist();
 
       this._ToastrService.success(
         `${movie.title} added to wishlist`,
@@ -48,7 +48,7 @@ export class WishlistService {
     this.wishlistItems = this.wishlistItems.filter(
       (item) => item.id !== movieId
     );
-    this.updateWishlist(); 
+    this.updateWishlist();
 
     this._ToastrService.info(
       `${movie.title} removed from wishlist`,
@@ -63,11 +63,12 @@ export class WishlistService {
 
   private updateWishlist(): void {
     this.wishlistSubject.next(this.wishlistItems);
-    localStorage.setItem('movieWishlist', JSON.stringify(this.wishlistItems)); 
+    localStorage.setItem('movieWishlist', JSON.stringify(this.wishlistItems));
 
-   
     this.watchListCount.next(this.wishlistItems.length);
-    localStorage.setItem('watchListCount', JSON.stringify(this.wishlistItems.length));
+    localStorage.setItem(
+      'watchListCount',
+      JSON.stringify(this.wishlistItems.length)
+    );
   }
 }
-

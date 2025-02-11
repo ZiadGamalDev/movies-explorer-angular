@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { WishlistService } from '../core/service/wishlist.service';
+import { WishlistService } from '../core/service/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +10,12 @@ import { WishlistService } from '../core/service/wishlist.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-
-  watchCount=0
-  constructor(private wishService:WishlistService) { }
+  watchCount = 0;
+  constructor(private wishService: WishlistService) {}
   ngOnInit(): void {
-    this.wishService.watchListCount$.subscribe(count => this.watchCount=count);
+    this.wishService.watchListCount$.subscribe(
+      (count) => (this.watchCount = count)
+    );
   }
   isScrolled = false;
 
@@ -25,6 +26,5 @@ export class NavbarComponent {
     } else {
       this.isScrolled = false;
     }
-
   }
 }
