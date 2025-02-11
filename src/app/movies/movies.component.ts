@@ -59,6 +59,7 @@ export class MoviesComponent implements OnInit {
       .subscribe((res) => {
         this.movies = res.results;
         this.filteredMovies = [...this.movies];
+        console.log(this.filteredMovies);
       });
   }
 
