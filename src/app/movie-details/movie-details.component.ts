@@ -20,11 +20,14 @@ import { WishlistService } from '../core/service/wishlist.service';
     RatingStarsPipe,
   ],
   templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css',
+  styleUrls: ['./movie-details.component.css'],
 })
 export class MovieDetailsComponent {
   movie!: Movie;
   isInWishlist: boolean = false;
+  isLoading: boolean = true; // Add loading state
+  notFound: boolean = false; // Handle 404-like scenario
+
   constructor(
     private requests: RequestsService,
     private _wishlistService: WishlistService,
@@ -42,9 +45,23 @@ export class MovieDetailsComponent {
   }
 
   getMovieData(id: number) {
-    this.requests.getMovieDetails(id).subscribe((res) => {
-      this.movie = res;
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.isLoading = true; // Start loading
+    this.requests.getMovieDetails(id).subscribe(
+      (res) => {
+        this.movie = res;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
+      },
+      (error) => {
+        console.error(error);
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
+        this.notFound = true; // Handle movie not found
+      }
+    );
   }
 
   get heartIconClass(): string {

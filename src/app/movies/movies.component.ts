@@ -29,6 +29,7 @@ export class MoviesComponent implements OnInit {
   isInWishlist: boolean = false;
   selectedLanguage: string = 'en-US';
   searchTerm: string = '';
+  isLoading: boolean = true; // Add the isLoading variable
 
   constructor(
     private requests: RequestsService,
@@ -46,21 +47,42 @@ export class MoviesComponent implements OnInit {
   }
 
   fetchMovies() {
-    this.requests.getNowPlayingMovies(this.currentPage).subscribe((res) => {
-      this.movies = res.results;
-      this.filteredMovies = res.results;
-      this.totalPages = res.total_pages;
-    });
+    this.isLoading = true; // Start loading
+    this.searchTerm = '';
+    this.requests.getNowPlayingMovies(this.currentPage).subscribe(
+      (res) => {
+        this.movies = res.results;
+        this.filteredMovies = res.results;
+        this.totalPages = res.total_pages;
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
+      },
+      (error) => {
+        console.error(error);
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
+      }
+    );
   }
 
   fetchMoviesWithLanguage() {
-    this.requests.getMoviesWithLanguages(this.selectedLanguage).subscribe((res) => {
-      this.movies = res.results;
-      this.filteredMovies = [...this.movies];
-    });
+    this.isLoading = true;
+    this.requests
+      .getMoviesWithLanguages(this.selectedLanguage)
+      .subscribe((res) => {
+        this.movies = res.results;
+        this.filteredMovies = [...this.movies];
+        console.log(this.filteredMovies);
+        setTimeout(() => {
+          this.isLoading = false; // End loading on error
+        }, 500);
+      });
   }
 
   filterMovies() {
+    this.isLoading = true;
     this.currentPage = 1;
     const term = this.searchTerm.trim();
 
@@ -69,8 +91,14 @@ export class MoviesComponent implements OnInit {
         this.filteredMovies = res.results;
         this.totalPages = res.total_pages;
       });
+      setTimeout(() => {
+        this.isLoading = false; // End loading on error
+      }, 500);
     } else {
       this.filteredMovies = [...this.movies];
+      setTimeout(() => {
+        this.isLoading = false; // End loading on error
+      }, 500);
     }
   }
 
@@ -91,7 +119,26 @@ export class MoviesComponent implements OnInit {
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.fetchMovies();
+      const term = this.searchTerm.trim();
+
+      if (term) {
+        // Use the search filter for pagination
+        this.requests.filterMovies(term, this.currentPage).subscribe((res) => {
+          this.filteredMovies = res.results;
+          this.totalPages = res.total_pages;
+          // Scroll to the top after loading the filtered movies
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      } else {
+        // Regular pagination without filtering
+        this.requests.getNowPlayingMovies(this.currentPage).subscribe((res) => {
+          this.movies = res.results;
+          this.filteredMovies = res.results;
+          this.totalPages = res.total_pages;
+          // Scroll to the top after loading the movies
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     }
   }
 

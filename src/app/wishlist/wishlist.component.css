@@ -5,14 +5,14 @@
 }
 
 .title::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0px;
   width: 0px;
   height: 4px;
   background-color: #ffd701;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 
 .title:hover::before {
@@ -37,7 +37,6 @@
 .movie-card {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-
 }
 
 img {
@@ -48,12 +47,12 @@ img {
 
 .movie-card:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  
+
   transform: scale(1.02);
 }
 
-.movie-title{
-  white-space: wrap;
+.movie-title {
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

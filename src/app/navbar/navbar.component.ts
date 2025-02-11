@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { WishlistService } from '../core/service/wishlist.service';
 import { LanguagesService } from '../core/service/languages.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -14,6 +14,7 @@ export class NavbarComponent {
   watchCount = 0;
   isScrolled = false;
   selectedLanguage: string = 'English (en-US)';
+  isSidebarOpen: boolean = false;
 
   constructor(
     private wishService: WishlistService,
@@ -33,6 +34,10 @@ export class NavbarComponent {
     } else {
       this.isScrolled = false;
     }
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   changeLanguage(language: string) {
