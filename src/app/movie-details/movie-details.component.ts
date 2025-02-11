@@ -45,6 +45,7 @@ export class MovieDetailsComponent {
   }
 
   getMovieData(id: number) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.isLoading = true; // Start loading
     this.requests.getMovieDetails(id).subscribe(
       (res) => {

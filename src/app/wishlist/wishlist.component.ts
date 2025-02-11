@@ -38,7 +38,9 @@ export class WishlistComponent implements OnInit {
     this.wishlist$ = this._wishlistService.getWishlist();
     console.log(this.wishlist$);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   navigateToMovie(movieId: number): void {
     this._router.navigate(['/movie', movieId]);
