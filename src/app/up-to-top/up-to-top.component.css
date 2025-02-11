@@ -17,6 +17,7 @@
   opacity: 0;
   transform: translateY(100px);
   transition: all 0.3s ease-in-out;
+  z-index: 200000;
 }
 
 .scroll-to-top.show {

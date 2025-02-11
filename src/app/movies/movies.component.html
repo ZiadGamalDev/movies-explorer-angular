@@ -1,19 +1,42 @@
 <app-up-to-top></app-up-to-top>
 
-
-<div class="container mt-4 d-flex flex-column">
-  <div class="mb-5 p-4 bg-dark rounded text-light">
-    <h2>Welcome to our movie app</h2>
-    <p>Millions of movies, TV shows, and people to discover. Explore now.</p>
-    <div class="d-flex justify-content-between">
-      <input type="text" class="form-control" placeholder="Search movies..." [(ngModel)]="searchTerm"
-        (keyup)="filterMovies()" />
+<div class="d-flex flex-column">
+  <div
+    class="mb-5 p-4 bg-dark rounded text-light d-flex flex-column align-items-center justify-content-center"
+    [ngStyle]="{
+      'background-image':
+        'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
+        getBackgroundImage() +
+        ')',
+      'background-size': 'cover',
+      'background-position': 'center',
+      height: '60vh'
+    }"
+  >
+    <h2 class="text-center">Welcome to our movie app</h2>
+    <p class="text-center">
+      Millions of movies, TV shows, and people to discover. Explore now.
+    </p>
+    <div class="d-flex justify-content-between w-50">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search movies..."
+        [(ngModel)]="searchTerm"
+        (keyup)="filterMovies()"
+      />
     </div>
   </div>
-  <main class="flex-grow">
+  <main class="flex-grow container">
     @if (isLoading) {
-    <div class="d-flex flex-column justify-content-center align-items-center my-5">
-      <div class="spinner-border text-warning mb-3" style="width: 3rem; height: 3rem;" role="status">
+    <div
+      class="d-flex flex-column justify-content-center align-items-center my-5"
+    >
+      <div
+        class="spinner-border text-warning mb-3"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
         <span class="visually-hidden">Loading...</span>
       </div>
       <h3 class="text-warning">Loading, please wait...</h3>
@@ -23,39 +46,78 @@
     <h2 class="mb-4 title">Now Playing</h2>
     <div class="row row-cols-2 row-cols-md-4 g-3">
       @if (filteredMovies.length === 0) {
-      <div class="d-flex flex-column justify-content-center align-items-center my-5 text-center mx-auto">
-        <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Movies"
-          style="width: 120px; height: 120px;" class="mb-4">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center my-5 text-center mx-auto"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
+          alt="No Movies"
+          style="width: 120px; height: 120px"
+          class="mb-4"
+        />
         <h3 class="text-danger fw-bold">No Movies Found</h3>
-        <p class="fs-5">It seems we couldn't find any matching movies. Try a different search or check back
-          later.</p>
-        <button class="btn btn-warning mt-3" (click)="fetchMovies()">Browse Now Playing</button>
+        <p class="fs-5">
+          It seems we couldn't find any matching movies. Try a different search
+          or check back later.
+        </p>
+        <button class="btn btn-warning mt-3" (click)="fetchMovies()">
+          Browse Now Playing
+        </button>
       </div>
 
-      }
-      @for (movie of filteredMovies; track movie.id) {
-      <div class="col">
+      } @for (movie of filteredMovies; track movie.id) {
+      <div class="col-md-6 col-lg-3 col-12">
         <div class="card bg-transparent">
           <div class="position-relative">
-            <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="Movie Poster"
-              style="cursor: pointer;" [routerLink]="['/movie', movie.id]" />
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+              class="card-img-top"
+              alt="Movie Poster"
+              style="cursor: pointer"
+              [routerLink]="['/movie', movie.id]"
+            />
             <div class="rating-circle position-absolute">
               <svg width="50" height="50">
-                <circle cx="25" cy="25" r="22.5" stroke="#444" stroke-width="4" fill="none"></circle>
-                <circle cx="25" cy="25" r="22.5" stroke="#4caf50" stroke-width="3" fill="none" stroke-dasharray="113"
-                  [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"></circle>
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="22.5"
+                  stroke="#444"
+                  stroke-width="4"
+                  fill="none"
+                ></circle>
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="22.5"
+                  [attr.stroke]="getGradientColor(movie.vote_average)"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-dasharray="113"
+                  [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"
+                ></circle>
               </svg>
-              <span>{{ movie.vote_average * 10 | number: '1.0-0' }}%</span>
+              <span>{{ movie.vote_average * 10 | number : "1.0-0" }}%</span>
             </div>
-
           </div>
-          <div class="card-body bg-transparent text-light d-flex align-items-center justify-content-between">
-            <div class="d-flex justify-content-between align-items-start flex-column">
-              <h6 class="card-title fw-bold">{{ movie.title | truncate: 20 }}</h6>
-              <p class="text-white-50" style="text-align: left">{{ movie.release_date | date: 'mediumDate' }}</p>
+          <div
+            class="card-body bg-transparent text-light d-flex align-items-center justify-content-between"
+          >
+            <div
+              class="d-flex justify-content-between align-items-start flex-column"
+            >
+              <h6 class="card-title fw-bold">
+                {{ movie.title | truncate : 20 }}
+              </h6>
+              <p class="text-white-50" style="text-align: left">
+                {{ movie.release_date | date : "mediumDate" }}
+              </p>
             </div>
-            <i [class]="getHeartIconClass(movie)" style="cursor: pointer; font-size: 35px"
-              (click)="toggleWishlist(movie)"></i>
+            <i
+              [class]="getHeartIconClass(movie)"
+              style="cursor: pointer; font-size: 35px"
+              (click)="toggleWishlist(movie)"
+            ></i>
           </div>
         </div>
       </div>
@@ -65,23 +127,31 @@
     <nav class="mt-4">
       <ul class="pagination justify-content-center">
         <li class="page-item" [class.disabled]="currentPage === 1">
-          <a class="page-link pagination-link bg-transparent" (click)="goToPage(currentPage - 1)">&lt;</a>
+          <a
+            class="page-link pagination-link bg-transparent"
+            (click)="goToPage(currentPage - 1)"
+            >&lt;</a
+          >
         </li>
         @for (page of getPaginationPages(); track page) {
         <li class="page-item mx-1" [class.active]="currentPage === page">
-          <a class="page-link pagination-link bg-transparent" (click)="goToPage(page)" style="cursor: pointer">{{ page
-            }}</a>
+          <a
+            class="page-link pagination-link bg-transparent"
+            (click)="goToPage(page)"
+            style="cursor: pointer"
+            >{{ page }}</a
+          >
         </li>
         }
         <li class="page-item" [class.disabled]="currentPage === totalPages">
-          <a class="page-link pagination-link bg-transparent" (click)="goToPage(currentPage + 1)">&gt;</a>
+          <a
+            class="page-link pagination-link bg-transparent"
+            (click)="goToPage(currentPage + 1)"
+            >&gt;</a
+          >
         </li>
       </ul>
     </nav>
-    }
-
-    }
+    } }
   </main>
-
-
 </div>

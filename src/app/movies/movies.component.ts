@@ -46,6 +46,10 @@ export class MoviesComponent implements OnInit {
     this.fetchMovies();
   }
 
+  getBackgroundImage(): string {
+    return 'assets/Hero.jpg';
+  }
+
   fetchMovies() {
     this.isLoading = true; // Start loading
     this.searchTerm = '';
@@ -163,4 +167,29 @@ export class MoviesComponent implements OnInit {
     const percentage = (voteAverage / 10) * 113;
     return 113 - percentage;
   }
+
+  getGradientColor(voteAverage: number): string {
+    const red = { r: 244, g: 67, b: 54 }; 
+    const yellow = { r: 255, g: 235, b: 59 };
+    const green = { r: 76, g: 175, b: 80 };
+  
+    let colorFrom, colorTo, factor;
+  
+    if (voteAverage <= 3) {
+      colorFrom = red;
+      colorTo = yellow;
+      factor = voteAverage / 3;
+    } else {
+      colorFrom = yellow;
+      colorTo = green;
+      factor = (voteAverage - 3) / 5;
+    }
+  
+    const r = Math.round(colorFrom.r + factor * (colorTo.r - colorFrom.r));
+    const g = Math.round(colorFrom.g + factor * (colorTo.g - colorFrom.g));
+    const b = Math.round(colorFrom.b + factor * (colorTo.b - colorFrom.b));
+  
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+  
 }
