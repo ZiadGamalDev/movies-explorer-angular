@@ -20,14 +20,13 @@
   <h2 class="my-4 title">Now Playing</h2>
   <div class="row row-cols-2 row-cols-md-4 g-3">
     @if (filteredMovies.length === 0) {
-    <p>No Movies Found</p>
-    } @else { @for (movie of filteredMovies; track movie.id) {
-    @for (movie of filteredMovies; track movie.id) {
+      <p>No Movies Found</p>
+      } @else { @for (movie of filteredMovies; track movie.id){
     <div class="col">
       <div class="card h-100 bg-transparent">
         <div class="position-relative">
           <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="Movie Poster"
-            style="height: 250px; object-fit: contain; cursor: pointer" [routerLink]="['/movie', movie.id]" />
+            style="cursor: pointer" [routerLink]="['/movie', movie.id]" />
           <div class="rating-circle position-absolute">
             <svg width="50" height="50">
               <circle cx="25" cy="25" r="22.5" stroke="#444" stroke-width="4" fill="none"></circle>
