@@ -1,8 +1,15 @@
 <app-up-to-top></app-up-to-top>
 
-<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center vh-100">
+<div
+  *ngIf="isLoading"
+  class="d-flex justify-content-center align-items-center vh-100"
+>
   <div class="text-center">
-    <div class="spinner-border text-warning mb-3" style="width: 5rem; height: 5rem;" role="status">
+    <div
+      class="spinner-border text-warning mb-3"
+      style="width: 5rem; height: 5rem"
+      role="status"
+    >
       <span class="visually-hidden">Loading...</span>
     </div>
     <h3 class="text-warning">Fetching movie details...</h3>
@@ -11,29 +18,44 @@
 
 @if(!isLoading && !notFound){
 <div>
-  <div class="container movie-card" [ngStyle]="{
-        'background-image':
-          'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
-          'https://image.tmdb.org/t/p/w1280/' +
-          movie.backdrop_path +
-          ')'
-      }">
+  <div
+    class="container movie-card"
+    [ngStyle]="{
+      'background-image':
+        'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
+        'https://image.tmdb.org/t/p/w1280/' +
+        movie.backdrop_path +
+        ')'
+    }"
+  >
     <div class="row mt-4">
       <div class="col-md-4">
-        <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="Movie Poster"
-          class="movie-poster rounded-4 shadow-lg" />
+        <img
+          [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+          alt="Movie Poster"
+          class="movie-poster rounded-4 shadow-lg"
+        />
       </div>
 
       <div class="col-md-8 movie-details">
         <div class="d-flex align-items-center justify-content-between">
           <h1 class="movie-title text-light">{{ movie.title }}</h1>
-          <i [class]="heartIconClass" (click)="toggleWishlist()" style="cursor: pointer; font-size: 35px;"></i>
+          <i
+            [class]="heartIconClass"
+            (click)="toggleWishlist()"
+            style="cursor: pointer; font-size: 35px"
+          ></i>
         </div>
 
-        <p class="release-date">{{ movie.release_date | date: 'mediumDate' }}</p>
+        <p class="release-date">
+          {{ movie.release_date | date : "mediumDate" }}
+        </p>
 
         <div class="rating d-flex align-items-center">
-          <span [innerHTML]="movie.vote_average | ratingStars" class="small"></span>
+          <span
+            [innerHTML]="movie.vote_average | ratingStars"
+            class="small"
+          ></span>
           <span class="rating-text ms-4">({{ movie.vote_count }} reviews)</span>
         </div>
 
@@ -52,14 +74,33 @@
           </p>
           <p class="movie-info">
             <strong>Languages:</strong>
-            <span *ngFor="let lang of movie.spoken_languages; let i = index" class="text-white-50">
-              {{ lang.english_name }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
+            <span
+              *ngFor="let lang of movie.spoken_languages; let i = index"
+              class="text-white-50"
+            >
+              {{ lang.english_name
+              }}<span *ngIf="i !== movie.spoken_languages.length - 1">, </span>
             </span>
           </p>
         </div>
 
+        <div class="d-flex align-items-center gap-3">
+          @for(company of movie.production_companies; track company.id){
+            @if(company.logo_path !== null){
+              <img
+                [src]="'https://image.tmdb.org/t/p/w500' + company.logo_path"
+                class="genre"
+                alt="Companies"
+                style="width: 100px"
+              />
+            } 
+          }
+        </div>
+
         <div class="my-4">
-          <a [href]="movie.homepage" target="_blank" class="btn btn-warning">Visit Official Website</a>
+          <a [href]="movie.homepage" target="_blank" class="btn btn-warning"
+            >Visit Official Website</a
+          >
         </div>
       </div>
     </div>
@@ -71,9 +112,6 @@
     <app-recommendations [movieId]="movie.id"></app-recommendations>
   </div>
 </div>
-}
-
-
-@if (notFound) {
+} @if (notFound) {
 <app-not-found></app-not-found>
 }
