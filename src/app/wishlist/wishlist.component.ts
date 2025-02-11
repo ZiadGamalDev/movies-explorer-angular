@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { WishlistService } from '../core/service/wishlist.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Movie } from '../core/interface/Movie';
 import { Router, RouterLink } from '@angular/router';
 import { TruncatePipe } from '../core/pipe/truncate.pipe';
 import { DatePipe } from '@angular/common';
 import { RatingStarsPipe } from '../core/pipe/rating-stars.pipe';
-import { UpToTopComponent } from "../up-to-top/up-to-top.component";
+import { UpToTopComponent } from '../up-to-top/up-to-top.component';
+import { WishlistService } from '../core/service/wishlist.service';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [DatePipe, RouterLink, RatingStarsPipe, TruncatePipe, UpToTopComponent],
+  imports: [
+    DatePipe,
+    RouterLink,
+    RatingStarsPipe,
+    TruncatePipe,
+    UpToTopComponent,
+  ],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })
