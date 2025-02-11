@@ -83,4 +83,9 @@ ul li a {
   .collapse {
     display: none !important;
   }
+  .navbar.scrolled {
+    width: 100%;
+    border-radius: 0;
+    top: 0;
+  }
 }

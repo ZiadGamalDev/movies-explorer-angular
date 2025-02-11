@@ -185,10 +185,18 @@
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    text-align: center;
   }
 
   .post-item {
     justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a::before {
+    display: none;
   }
 }
