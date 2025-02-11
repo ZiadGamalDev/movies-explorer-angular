@@ -4,13 +4,8 @@
     <h2>Welcome to our movie app</h2>
     <p>Millions of movies, TV shows, and people to discover. Explore now.</p>
     <div class="d-flex justify-content-between">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search movies..."
-        [(ngModel)]="searchTerm"
-        (keyup)="filterMovies()"
-      />
+      <input type="text" class="form-control" placeholder="Search movies..." [(ngModel)]="searchTerm"
+        (keyup)="filterMovies()" />
       <button class="btn btn-warning ms-2" (click)="filterMovies()">
         Search
       </button>
@@ -21,7 +16,7 @@
   <div class="row row-cols-2 row-cols-md-4 g-3">
     @if (filteredMovies.length === 0) {
     <p>No Movies Found</p>
-    } @else { @for (movie of filteredMovies; track movie.id) {
+    } @else {
     @for (movie of filteredMovies; track movie.id) {
     <div class="col">
       <div class="card h-100 bg-transparent">
@@ -42,15 +37,12 @@
             <h6 class="card-title fw-bold">{{ movie.title | truncate: 20 }}</h6>
             <p class="text-white-50" style="text-align: left">{{ movie.release_date | date: 'mediumDate' }}</p>
           </div>
-           <i
-            [class]="getHeartIconClass(movie)"
-            style="cursor: pointer; font-size: 35px"
-            (click)="toggleWishlist(movie)"
-          ></i>
+          <i [class]="getHeartIconClass(movie)" style="cursor: pointer; font-size: 35px"
+            (click)="toggleWishlist(movie)"></i>
         </div>
       </div>
     </div>
-    } }
+    }}
   </div>
 
   <nav class="mt-4">
