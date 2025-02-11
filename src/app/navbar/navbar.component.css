@@ -88,4 +88,13 @@ ul li a {
     border-radius: 0;
     top: 0;
   }
+
+  .sidebar {
+    background-color: #191c1f !important;
+  }
+
+  .nav-item a{
+    color: #fff !important;
+    text-decoration: none;
+  }
 }
