@@ -97,4 +97,9 @@ ul li a {
     color: #fff !important;
     text-decoration: none;
   }
+
+  .dropdown-menu li a {
+    color: #191c1f !important;
+    border-bottom: 1px solid #ccc !important;
+  }
 }
