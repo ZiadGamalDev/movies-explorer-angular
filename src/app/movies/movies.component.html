@@ -2,69 +2,38 @@
 <div class="container mt-4">
   <div class="mb-5 p-4 bg-dark rounded text-light">
     <h2>Welcome to our movie app</h2>
-    <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+    <p>Millions of movies, TV shows, and people to discover. Explore now.</p>
     <div class="d-flex justify-content-between">
-      <input type="text" class="form-control" placeholder="Search movies..." />
-      <button class="btn btn-warning ms-2">Search</button>
+      <input type="text" class="form-control" placeholder="Search movies..." [(ngModel)]="searchTerm"
+        (keyup)="filterMovies()" />
+      <button class="btn btn-warning ms-2" (click)="filterMovies()">Search</button>
     </div>
   </div>
 
   <h2 class="my-4 title">Now Playing</h2>
   <div class="row row-cols-2 row-cols-md-4 g-3">
-    @for (movie of movies; track movie.id) {
+    @for (movie of filteredMovies; track movie.id) {
     <div class="col">
       <div class="card h-100 bg-transparent">
         <div class="position-relative">
-          <img
-            [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
-            class="card-img-top"
-            alt="Movie Poster"
-            style="height: 250px; object-fit: contain"
-            [routerLink]="['/movie', movie.id]"
-            style="cursor: pointer"
-          />
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img-top" alt="Movie Poster"
+            style="height: 250px; object-fit: contain; cursor: pointer" [routerLink]="['/movie', movie.id]" />
           <div class="rating-circle position-absolute">
             <svg width="50" height="50">
-              <circle
-                cx="25"
-                cy="25"
-                r="22.5"
-                stroke="#444"
-                stroke-width="4"
-                fill="none"
-              ></circle>
-              <circle
-                cx="25"
-                cy="25"
-                r="22.5"
-                stroke="#4caf50"
-                stroke-width="3"
-                fill="none"
-                stroke-dasharray="113"
-                [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"
-              ></circle>
+              <circle cx="25" cy="25" r="22.5" stroke="#444" stroke-width="4" fill="none"></circle>
+              <circle cx="25" cy="25" r="22.5" stroke="#4caf50" stroke-width="3" fill="none" stroke-dasharray="113"
+                [attr.stroke-dashoffset]="calcProgress(movie.vote_average)"></circle>
             </svg>
-            <span>{{ movie.vote_average * 10 | number : "1.0-0" }}%</span>
+            <span>{{ movie.vote_average * 10 | number: '1.0-0' }}%</span>
           </div>
         </div>
-        <div
-          class="card-body bg-transparent text-light d-flex align-items-center justify-content-between"
-        >
-          <div
-            class="d-flex justify-content-between align-items-start flex-column"
-          >
-            <h6 class="card-title fw-bold">
-              {{ movie.title | truncate : 20 }}
-            </h6>
-            <p class="text-white-50" style="text-align: left">
-              {{ movie.release_date | date : "mediumDate" }}
-            </p>
+        <div class="card-body bg-transparent text-light d-flex align-items-center justify-content-between">
+          <div class="d-flex justify-content-between align-items-start flex-column">
+            <h6 class="card-title fw-bold">{{ movie.title | truncate: 20 }}</h6>
+            <p class="text-white-50" style="text-align: left">{{ movie.release_date | date: 'mediumDate' }}</p>
           </div>
-          <i
-            [class]="getHeartIconClass(movie)"
-            style="cursor: pointer; font-size: 35px;"
-            (click)="toggleWishlist(movie)"
-          ></i>
+          <i [class]="getHeartIconClass(movie)" style="cursor: pointer; font-size: 35px;"
+            (click)="toggleWishlist(movie)"></i>
         </div>
       </div>
     </div>
@@ -74,28 +43,16 @@
   <nav class="mt-4">
     <ul class="pagination justify-content-center">
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <a
-          class="page-link pagination-link bg-transparent"
-          (click)="goToPage(currentPage - 1)"
-          >&lt;</a
-        >
+        <a class="page-link pagination-link bg-transparent" (click)="goToPage(currentPage - 1)">&lt;</a>
       </li>
       @for (page of getPaginationPages(); track page) {
       <li class="page-item mx-1" [class.active]="currentPage === page">
-        <a
-          class="page-link pagination-link bg-transparent"
-          (click)="goToPage(page)"
-          style="cursor: pointer"
-          >{{ page }}</a
-        >
+        <a class="page-link pagination-link bg-transparent" (click)="goToPage(page)" style="cursor: pointer">{{ page
+          }}</a>
       </li>
       }
       <li class="page-item" [class.disabled]="currentPage === totalPages">
-        <a
-          class="page-link pagination-link bg-transparent"
-          (click)="goToPage(currentPage + 1)"
-          >&gt;</a
-        >
+        <a class="page-link pagination-link bg-transparent" (click)="goToPage(currentPage + 1)">&gt;</a>
       </li>
     </ul>
   </nav>
