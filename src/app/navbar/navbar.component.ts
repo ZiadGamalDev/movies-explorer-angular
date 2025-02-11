@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { WishlistService } from '../core/service/wishlist.service';
+import { LanguagesService } from '../core/service/languages.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +11,20 @@ import { WishlistService } from '../core/service/wishlist.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-
-  watchCount=0
-  constructor(private wishService:WishlistService) { }
-  ngOnInit(): void {
-    this.wishService.watchListCount$.subscribe(count => this.watchCount=count);
-  }
   isScrolled = false;
+  watchCount = 0;
+  selectedLanguage: string = 'English (en-US)';
+
+  constructor(
+    private wishService: WishlistService,
+    private languageService: LanguagesService
+  ) {}
+
+  ngOnInit(): void {
+    this.wishService.watchListCount$.subscribe(
+      (count) => (this.watchCount = count)
+    );
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -25,6 +33,21 @@ export class NavbarComponent {
     } else {
       this.isScrolled = false;
     }
+  }
 
+  changeLanguage(language: string) {
+    this.selectedLanguage = this.getLanguageName(language);
+    this.languageService.setLanguage(language);
+  }
+
+  getLanguageName(code: string): string {
+    const languages: { [key: string]: string } = {
+      'en-US': 'English (en-US)',
+      'es-ES': 'Spanish; Castilian (es-ES)',
+      'fr-FR': 'French (fr-FR)',
+      'ar-EG': 'Arabic (ar-EG)',
+      'zh-CN': 'Chinese (zh-CN)',
+    };
+    return languages[code] || 'English';
   }
 }

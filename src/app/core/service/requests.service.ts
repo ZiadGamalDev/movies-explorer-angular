@@ -27,4 +27,10 @@ export class RequestsService {
       `${environment.baseURL}/now_playing?api_key=${environment.apiKey}&page=${page}`
     );
   }
+
+  getMoviesWithLanguages(language: string = 'en-US'): Observable<any> {
+    return this.http.get<Movie>(
+      `${environment.baseURL}/now_playing?api_key=${environment.apiKey}&language=${language}`
+    );
+  }
 }
