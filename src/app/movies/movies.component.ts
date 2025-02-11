@@ -11,7 +11,13 @@ import { LanguagesService } from '../core/service/languages.service';
 
 @Component({
   selector: 'app-movies',
-  imports: [RouterModule, CommonModule, TruncatePipe, UpToTopComponent, FormsModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    TruncatePipe,
+    UpToTopComponent,
+    FormsModule,
+  ],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
 })
@@ -53,13 +59,16 @@ export class MoviesComponent implements OnInit {
       this.filteredMovies = [...this.movies];
     });
   }
-
+      
   filterMovies() {
-    const term = this.searchTerm.toLowerCase().trim();
+    this.currentPage = 1;
+    const term = this.searchTerm.trim();
+
     if (term) {
-      this.filteredMovies = this.movies.filter((movie) =>
-        movie.title.toLowerCase().includes(term)
-      );
+      this.requests.filterMovies(term, this.currentPage).subscribe((res) => {
+        this.filteredMovies = res.results;
+        this.totalPages = res.total_pages;
+      });
     } else {
       this.filteredMovies = [...this.movies];
     }
@@ -88,12 +97,12 @@ export class MoviesComponent implements OnInit {
 
   getPaginationPages(): number[] {
     let pages: number[] = [];
-    let totalToShow = 5;
+    const totalToShow = 5; // Max number of pages to display
     let start = Math.max(1, this.currentPage - Math.floor(totalToShow / 2));
     let end = Math.min(this.totalPages, start + totalToShow - 1);
 
     if (end - start < totalToShow - 1) {
-      start = Math.max(1, end - totalToShow + 1);
+      start = Math.max(1, end - (totalToShow - 1));
     }
 
     for (let i = start; i <= end; i++) {
