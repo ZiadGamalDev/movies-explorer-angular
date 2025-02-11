@@ -21,8 +21,8 @@ import { UpToTopComponent } from '../up-to-top/up-to-top.component';
   styleUrls: ['./movies.component.css'],
 })
 export class MoviesComponent implements OnInit {
-  movies: Movie[] = [];
-  filteredMovies: Movie[] = [];
+  movies: Movie[] = []; // if no text in the search input
+  filteredMovies: Movie[] = []; // if there is a text in the search input
   currentPage: number = 1;
   totalPages: number = 1;
   searchTerm: string = '';
@@ -45,13 +45,16 @@ export class MoviesComponent implements OnInit {
   }
 
   filterMovies() {
-    const term = this.searchTerm.toLowerCase().trim();
+    this.currentPage = 1;
+    const term = this.searchTerm.trim();
+
     if (term) {
-      this.filteredMovies = this.movies.filter((movie) =>
-        movie.title.toLowerCase().includes(term)
-      );
+      this.requests.filterMovies(term, this.currentPage).subscribe((res) => {
+        this.filteredMovies = res.results;
+        this.totalPages = res.total_pages;
+      });
     } else {
-      this.filteredMovies = [...this.movies]; // Reset to original list if search is empty
+      this.fetchMovies();
     }
   }
 
