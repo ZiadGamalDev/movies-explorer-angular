@@ -9,10 +9,11 @@ import {
   animate,
 } from '@angular/animations';
 import { RouterModule } from '@angular/router';
+import { UpToTopComponent } from "../up-to-top/up-to-top.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, UpToTopComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [
