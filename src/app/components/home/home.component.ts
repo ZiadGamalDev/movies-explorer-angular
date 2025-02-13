@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RequestsService } from '../core/service/requests.service';
+import { RequestsService } from '../../core/service/requests.service';
 import { CommonModule } from '@angular/common';
 import {
   trigger,
