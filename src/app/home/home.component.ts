@@ -9,7 +9,7 @@ import {
   animate,
 } from '@angular/animations';
 import { RouterModule } from '@angular/router';
-import { UpToTopComponent } from "../up-to-top/up-to-top.component";
+import { UpToTopComponent } from '../up-to-top/up-to-top.component';
 
 @Component({
   selector: 'app-home',
@@ -63,8 +63,8 @@ export class HomeComponent {
 
   faqs = [
     {
-      question: 'What is Netflix?',
-      answer: `Netflix is a streaming service that offers a wide variety of 
+      question: 'What is Fasel?',
+      answer: `Fasel is a streaming service that offers a wide variety of 
                award-winning TV shows, movies, anime, documentaries, and more 
                on thousands of internet-connected devices.
                You can watch as much as you want, whenever you want without a 
@@ -73,42 +73,42 @@ export class HomeComponent {
       isOpen: false,
     },
     {
-      question: 'How much does Netflix cost?',
-      answer: `Netflix offers different pricing plans depending on your needs.
+      question: 'How much does Fasel cost?',
+      answer: `Fasel offers different pricing plans depending on your needs.
                Prices vary based on the quality of streaming and the number of 
                screens you can watch on at the same time.
-               You can visit the official Netflix website to check the latest pricing details.`,
+               You can visit the official Fasel website to check the latest pricing details.`,
       isOpen: false,
     },
     {
       question: 'Where can I watch?',
-      answer: `You can watch Netflix anywhere, anytime, on an unlimited number of devices.
-               Sign in with your Netflix account to watch instantly on the web at netflix.com from your 
-               personal computer or on any internet-connected device that offers the Netflix app, 
+      answer: `You can watch Fasel anywhere, anytime, on an unlimited number of devices.
+               Sign in with your Fasel account to watch instantly on the web at fasel.com from your 
+               personal computer or on any internet-connected device that offers the Fasel app, 
                such as smart TVs, smartphones, tablets, streaming media players, and game consoles.`,
       isOpen: false,
     },
     {
       question: 'How do I cancel?',
-      answer: `Netflix is flexible. There are no annoying contracts and no commitments. 
+      answer: `Fasel is flexible. There are no annoying contracts and no commitments. 
                You can easily cancel your account online in just two clicks. 
                There are no cancellation fees – start or stop your account anytime.`,
       isOpen: false,
     },
     {
-      question: 'What can I watch on Netflix?',
-      answer: `Netflix has an extensive library of feature films, documentaries, TV shows, anime, 
-               award-winning Netflix originals, and more. 
+      question: 'What can I watch on Fasel?',
+      answer: `Fasel has an extensive library of feature films, documentaries, TV shows, anime, 
+               award-winning Fasel originals, and more. 
                You can browse a wide variety of genres including action, comedy, drama, horror, and sci-fi. 
-               There's always something new to watch, and Netflix frequently adds new content every month!`,
+               There's always something new to watch, and Fasel frequently adds new content every month!`,
       isOpen: false,
     },
     {
-      question: 'Is Netflix good for kids?',
-      answer: `Yes! Netflix offers a Kids profile feature that allows children to have a 
+      question: 'Is Fasel good for kids?',
+      answer: `Yes! Fasel offers a Kids profile feature that allows children to have a 
                safe viewing experience with family-friendly content. 
                Parents can also use parental controls to restrict certain content and set viewing limits. 
-               Netflix Kids has a wide variety of animated movies, educational shows, and popular kids’ series.`,
+               Fasel Kids has a wide variety of animated movies, educational shows, and popular kids’ series.`,
       isOpen: false,
     },
   ];
