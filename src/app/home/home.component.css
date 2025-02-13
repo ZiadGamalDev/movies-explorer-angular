@@ -77,14 +77,46 @@
 }
 
 .movie-card {
-  margin: 10px;
-  text-align: center;
+  position: relative;
   width: 200px;
+  overflow: hidden;
+  text-align: center;
 }
 
-.movie-card img {
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
   width: 100%;
   border-radius: 10px;
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  font-size: 24px;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.image-container:hover .eye {
+  bottom: 0px;
+  height: 50px;
+}
+
+.eyeIcon {
+  cursor: pointer;
 }
 
 .TrendingTitle {
@@ -120,8 +152,8 @@
 
 .btns {
   position: absolute;
-  top: -12%;
-  right: 8%; 
+  top: -15%;
+  right: 11%;
 }
 
 .carousel-control-prev,
@@ -143,7 +175,7 @@
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
   background-color: #ffc107;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .features-section {
@@ -250,4 +282,140 @@
   padding: 10px;
   font-size: 16px;
   line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+  }
+
+  .content {
+    max-width: 90%;
+  }
+
+  .top h1 {
+    font-size: 2rem;
+  }
+
+  .top p {
+    font-size: 1rem;
+  }
+
+  .bottom h2 {
+    font-size: 0.9rem;
+  }
+
+  .bottom input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 10px;
+  }
+
+  .bottom button {
+    width: 100%;
+    font-size: 1.2rem;
+    justify-content: center;
+    padding: 7px 15px;
+    margin-left: 30px;
+  }
+
+  .movie-card {
+    width: 150px;
+  }
+
+  .TrendingTitle {
+    font-size: 1.5rem;
+    margin-left: 20px;
+  }
+
+  .btns {
+    top: -15%;
+    right: 7%;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 35px;
+    height: 35px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 90%;
+  }
+
+  .faq h2 {
+    font-size: 20px;
+  }
+
+  .faq-question {
+    font-size: 16px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 70vh;
+  }
+
+  .top h1 {
+    font-size: 1.8rem;
+  }
+
+  .top p {
+    font-size: 0.9rem;
+  }
+
+  .bottom h2 {
+    font-size: 0.8rem;
+  }
+
+  .bottom input {
+    padding: 0.6rem;
+  }
+
+  .bottom button {
+    font-size: 1rem;
+    padding: 7px 7px;
+    margin-left: 5px;
+  }
+
+  .btns {
+    right: 12%;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-control-prev i,
+  .carousel-control-next i {
+    font-size: 15px;
+  }
+
+  .movie-card {
+    width: 120px;
+  }
+
+  .TrendingTitle {
+    font-size: 1.3rem;
+  }
+
+  .features-title {
+    font-size: 20px;
+  }
+
+  .faq h2 {
+    font-size: 18px;
+  }
 }

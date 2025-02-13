@@ -40,11 +40,16 @@
       >
         <div class="d-flex justify-content-center gap-4">
           <div *ngFor="let movie of chunk" class="movie-card">
-            <img
-              [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-              class="d-block"
-              [alt]="movie.title"
-            />
+            <div class="image-container">
+              <img
+                [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                class="d-block"
+                [alt]="movie.title"
+              />
+              <a [routerLink]="['/movie', movie.id]" class="eye">
+                <i class="fa-regular fa-eye eyeIcon"></i>
+              </a>
+            </div>
             <p class="movie-title">{{ movie.title }}</p>
           </div>
         </div>
@@ -59,7 +64,7 @@
         data-bs-target="#movieCarousel"
         data-bs-slide="prev"
       >
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-right"></i>
       </button>
 
       <button
@@ -68,7 +73,7 @@
         data-bs-target="#movieCarousel"
         data-bs-slide="next"
       >
-        <i class="fas fa-chevron-right"></i>
+        <i class="fas fa-chevron-left"></i>
       </button>
     </div>
   </div>
