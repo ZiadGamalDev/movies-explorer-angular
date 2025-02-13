@@ -31,13 +31,19 @@ export class RequestsService {
   getMoviesWithLanguages(language: string = 'en-US'): Observable<any> {
     return this.http.get<Movie>(
       `${environment.baseURL}/now_playing?api_key=${environment.apiKey}&language=${language}`
-      );
-     }
+    );
+  }
 
   // Updated filterMovies method with corrected URL parameters
   filterMovies(searchTerm: string, page: number = 1): Observable<any> {
     return this.http.get<Movie>(
       `https://api.themoviedb.org/3/search/movie?api_key=${environment.apiKey}&query=${searchTerm}&page=${page}`
+    );
+  }
+
+  getTrendingMovies(): Observable<any> {
+    return this.http.get<any>(
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=${environment.apiKey}`
     );
   }
 }

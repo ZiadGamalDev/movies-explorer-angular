@@ -27,6 +27,7 @@
 ul li a {
   cursor: pointer;
 }
+
 .navbar-logo {
   height: 35px;
   object-fit: contain;
@@ -41,6 +42,26 @@ ul li a {
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+
+.MovieLink {
+  position: relative;
+  padding: 0;
+}
+
+.MovieLink::before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #191c1f;
+  transition: .3s all ease-in-out;
+}
+
+.MovieLink:hover::before {
+  width: 90%;
+} 
 
 @media (max-width: 991px) {
   .navbar-nav {
@@ -93,7 +114,7 @@ ul li a {
     background-color: #191c1f !important;
   }
 
-  .nav-item a{
+  .nav-item a {
     color: #fff !important;
     text-decoration: none;
   }

@@ -29,7 +29,7 @@ export class MoviesComponent implements OnInit {
   isInWishlist: boolean = false;
   selectedLanguage: string = 'en-US';
   searchTerm: string = '';
-  isLoading: boolean = true; // Add the isLoading variable
+  isLoading: boolean = true;
 
   constructor(
     private requests: RequestsService,

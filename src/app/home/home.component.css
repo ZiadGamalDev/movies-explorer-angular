@@ -1,0 +1,253 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  min-height: min(80vh, 45rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content {
+  max-width: 36.75rem;
+}
+
+.top h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.top p {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.bottom h2 {
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.bottom input {
+  font-size: 1rem;
+  padding: 0.8rem 3rem;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all ease-in-out 0.3s;
+}
+
+.bottom input:focus-visible {
+  border: 1px solid #ffc107;
+  outline: none;
+}
+
+.bottom button {
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #ffc107;
+  padding: 7px 35px;
+  color: #fff;
+  width: 25%;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.bottom button i {
+  font-size: 1rem;
+  transition: all ease-in-out 0.3s;
+}
+
+.bottom button:hover i {
+  margin-left: 5px;
+}
+
+.movie-card {
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.TrendingTitle {
+  margin-left: 55px;
+  position: relative;
+  width: fit-content;
+}
+
+.TrendingTitle::before {
+  position: absolute;
+  content: "";
+  bottom: -4px;
+  left: 0px;
+  width: 0;
+  height: 4px;
+  background-color: #ffc107;
+  transition: all ease-in-out 0.3s;
+}
+
+.TrendingTitle:hover::before {
+  width: 90%;
+}
+
+.movie-title {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.carousel {
+  position: relative;
+}
+
+.btns {
+  position: absolute;
+  top: -12%;
+  right: 8%; 
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background-color: #ffc107;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  opacity: 1;
+}
+
+.carousel-control-next {
+  margin-right: 10px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #ffc107;
+  opacity: .8;
+}
+
+.features-section {
+  background-color: rgb(37, 37, 37);
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.features-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background: linear-gradient(135deg, #1e002a, #4a0b5e, #9b1b7d, #e53e3e);
+  border-radius: 10px;
+  padding: 20px 30px 60px;
+  width: 300px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature h3 {
+  font-size: 18px;
+}
+
+.feature p {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.feature i {
+  position: absolute;
+  height: auto;
+  bottom: 30px;
+  right: 30px;
+  font-size: 30px;
+  background: linear-gradient(135deg, #0f172a, #3b0764);
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.faq {
+  margin: 60px 0px;
+  background: rgb(37, 37, 37);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.faq-question span {
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+
+.faq-question .rotate {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}

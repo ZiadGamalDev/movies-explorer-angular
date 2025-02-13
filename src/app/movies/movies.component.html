@@ -43,7 +43,10 @@
     </div>
 
     }@else {
-    <h2 class="mb-4 title">Now Playing</h2>
+    <div class="d-flex align-items-center justify-content-between">
+      <h2 class="mb-4 title">Now Playing</h2>
+      <a routerLink="/" class="navbar-brand MovieLink">Back to Home</a>
+    </div>
     <div class="row row-cols-2 row-cols-md-4 g-3">
       @if (filteredMovies.length === 0) {
       <div
