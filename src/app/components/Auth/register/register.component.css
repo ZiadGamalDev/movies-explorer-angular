@@ -1,0 +1,39 @@
+.main {
+  background-image: url("/assets/login-bg1.jpg");
+  background-size: contain;
+}
+.card {
+  transition: all 0.3s ease;
+  background-color: rgb(35, 35, 33);
+  border-radius: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+.text {
+  color: rgb(97, 97, 71);
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #272c34;
+}
+
+.btn-outline-dark {
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+.input-group-text {
+  border: none;
+}
+
+.form-control {
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+
+.input-group {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
