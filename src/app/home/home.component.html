@@ -1,0 +1,133 @@
+<div
+  class="hero"
+  [ngStyle]="{
+    'background-image':
+      'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' +
+      getBackgroundImage() +
+      ')',
+    'background-size': 'cover',
+    'background-position': 'center',
+  }"
+>
+  <div class="overlay">
+    <div class="content">
+      <div class="top">
+        <h1>Unlimited movies, TV shows, and more</h1>
+        <p>Starts at EGP 100. Cancel anytime.</p>
+      </div>
+      <div class="bottom">
+        <h2>
+          Ready to watch? Enter your email to create or restart your membership.
+        </h2>
+
+        <div class="d-flex align-items-center justify-content-around">
+          <input type="email" placeholder="Email address" />
+          <button>Start <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h2 class="TrendingTitle">Trending Movies</h2>
+  <div id="movieCarousel" class="carousel slide my-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div
+        *ngFor="let chunk of getMovieChunks(); let i = index"
+        class="carousel-item"
+        [class.active]="i === 0"
+      >
+        <div class="d-flex justify-content-center gap-4">
+          <div *ngFor="let movie of chunk" class="movie-card">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+              class="d-block"
+              [alt]="movie.title"
+            />
+            <p class="movie-title">{{ movie.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="btns">
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#movieCarousel"
+        data-bs-slide="prev"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#movieCarousel"
+        data-bs-slide="next"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="features-section">
+  <div class="container d-flex flex-column justify-content-center">
+    <h2 class="features-title">More Reasons to Join</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Enjoy on your TV</h3>
+        <p>
+          Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
+          players, and more.
+        </p>
+        <i class="fa-solid fa-tv"></i>
+      </div>
+
+      <div class="feature">
+        <h3>Download your shows to watch offline</h3>
+        <p>Save your favorites easily and always have something to watch.</p>
+        <i class="fa-solid fa-download"></i>
+      </div>
+
+      <div class="feature">
+        <h3>Watch everywhere</h3>
+        <p>
+          Stream unlimited movies and TV shows on your phone, tablet, laptop,
+          and TV.
+        </p>
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div class="feature">
+        <h3>Create profiles for kids</h3>
+        <p>
+          Send kids on adventures with their favorite characters in a space made
+          just for them — free with your membership.
+        </p>
+        <i class="fa-solid fa-child"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <div class="faq-question" (click)="toggleFaq(i)">
+        <p>{{ faq.question }}</p>
+        <span [class.rotate]="faq.isOpen">+</span>
+      </div>
+      <div
+        [@expandCollapse]="faq.isOpen ? 'expanded' : 'collapsed'"
+        class="faq-answer"
+      >
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>
+</div>

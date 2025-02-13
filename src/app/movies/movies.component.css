@@ -19,6 +19,26 @@
   width: 90%;
 }
 
+.MovieLink {
+  position: relative;
+  padding: 0;
+}
+
+.MovieLink::before {
+  position: absolute;
+  content: '';
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #ffd701;
+  transition: .3s all ease-in-out;
+}
+
+.MovieLink:hover::before {
+  width: 90%;
+} 
+
 .card img {
   border-radius: 15px;
   transition: all ease-in-out .3s;
