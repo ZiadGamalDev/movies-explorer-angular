@@ -4,12 +4,18 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/movies',
+    redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    title: 'Home',
   },
   {
     path: 'movies',
