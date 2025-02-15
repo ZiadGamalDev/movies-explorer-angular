@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -11,20 +11,6 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.css',
   standalone: true,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Movies-ITI';
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('config', 'G-TQJ37896NQ', {
-            page_path: event.urlAfterRedirects,
-          });
-        }
-      }
-    });
-  }
 }
