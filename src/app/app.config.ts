@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { provideGoogleAnalytics, provideGoogleAnalyticsRouter } from '@hakimio/ngx-google-analytics';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,7 @@ export const appConfig: ApplicationConfig = {
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
+    provideGoogleAnalytics('G-TQJ37896NQ'), // استبدل بمعرف التتبع الخاص بك
+    provideGoogleAnalyticsRouter() // لتتبع تغييرات المسار تلقائيًا
   ],
 };
