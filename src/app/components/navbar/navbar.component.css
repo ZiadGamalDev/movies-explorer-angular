@@ -63,6 +63,26 @@ ul li a {
   width: 90%;
 } 
 
+.MovieLinkSide {
+  position: relative;
+  padding: 0;
+}
+
+.MovieLinkSide::before {
+  position: absolute;
+  content: '';
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #ffd700;
+  transition: .3s all ease-in-out;
+}
+
+.MovieLinkSide:hover::before {
+  width: 90%;
+}
+
 @media (max-width: 991px) {
   .navbar-nav {
     flex-direction: column;
