@@ -22,6 +22,8 @@
     <!-- Full Menu for Large Screens -->
     <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
+        <a routerLink="/register" class="navbar-brand MovieLink">Sign Up</a>
+
         <!-- Language Selector Dropdown -->
         <li class="nav-item dropdown mx-2">
           <button
@@ -136,7 +138,7 @@
         <li class="nav-item my-4">
           <a
             routerLink="/wishlist"
-            class="d-flex align-items-center justify-content-center gap-2"
+            class="d-flex align-items-center justify-content-center gap-2 MovieLinkSide"
           >
             <img
               src="../../assets/heartSide.png"
@@ -148,6 +150,9 @@
               watchCount
             }}</span>
           </a>
+        </li>
+        <li class="nav-item my-4">
+          <a routerLink="/register" class="navbar-brand MovieLinkSide">Sign Up</a>
         </li>
       </ul>
     </div>
