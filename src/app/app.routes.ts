@@ -1,15 +1,22 @@
 import { Routes } from '@angular/router';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { MoviesComponent } from './movies/movies.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-import { HomeComponent } from './home/home.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
+
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    title: 'Home',
   },
   {
     path: 'home',
@@ -30,6 +37,12 @@ export const routes: Routes = [
     path: 'wishlist',
     component: WishlistComponent,
     title: 'Wishlist',
+  },
+
+  {
+    path: 'register',
+    component: RegisterComponent,
+    title: 'registeration',
   },
   {
     path: '**',

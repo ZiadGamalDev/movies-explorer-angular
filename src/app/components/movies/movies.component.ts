@@ -1,13 +1,13 @@
 import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { RequestsService } from '../core/service/requests.service';
-import { Movie } from '../core/interface/Movie';
+import { RequestsService } from '../../core/service/requests.service';
+import { Movie } from '../../core/interface/Movie';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TruncatePipe } from '../core/pipe/truncate.pipe';
+import { TruncatePipe } from '../../core/pipe/truncate.pipe';
 import { UpToTopComponent } from '../up-to-top/up-to-top.component';
-import { WishlistService } from '../core/service/wishlist.service';
-import { LanguagesService } from '../core/service/languages.service';
+import { WishlistService } from '../../core/service/wishlist.service';
+import { LanguagesService } from '../../core/service/languages.service';
 
 @Component({
   selector: 'app-movies',

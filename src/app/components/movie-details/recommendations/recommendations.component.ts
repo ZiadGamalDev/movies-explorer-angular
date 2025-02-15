@@ -5,11 +5,11 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Movie } from '../../core/interface/Movie';
-import { RequestsService } from '../../core/service/requests.service';
+import { Movie } from '../../../core/interface/Movie';
+import { RequestsService } from '../../../core/service/requests.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { TruncatePipe } from '../../core/pipe/truncate.pipe';
+import { TruncatePipe } from '../../../core/pipe/truncate.pipe';
 
 @Component({
   selector: 'app-recommendations',
