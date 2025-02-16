@@ -11,9 +11,9 @@
 .card:hover {
   transform: translateY(-5px);
 }
-.text {
-  color: rgb(97, 97, 71);
-}
+/* .text {
+  color: rgb(114, 114, 40);
+} */
 .form-control:focus {
   box-shadow: none;
   border-color: #272c34;

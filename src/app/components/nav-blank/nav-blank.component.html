@@ -1,5 +1,5 @@
 <nav
-  class="navbar navbar-expand-lg navbar-light bg-warning fixed-top"
+  class="navbar navbar-expand-lg navbar-light bg-warning fixed-top "
   [ngClass]="{ scrolled: isScrolled }"
 >
   <div class="container-fluid">
@@ -22,7 +22,7 @@
     <!-- Full Menu for Large Screens -->
     <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
-        <a routerLink="/register" class="navbar-brand MovieLink">Sign Up</a>
+        
 
         <!-- Language Selector Dropdown -->
         <li class="nav-item dropdown mx-2">
@@ -65,21 +65,25 @@
         </li>
 
         <!-- Wishlist Section -->
-        <li class="nav-item">
-          <a
-            routerLink="/wishlist"
-            class="d-flex align-items-center gap-2 text-decoration-none"
-          >
-            <img
-              src="../../assets/heart.png"
-              alt="wishlist"
-              class="wishlist-icon"
-            />
-            <span class="text-white fw-bold">WatchList</span>
-            <span class="badge bg-dark rounded-pill ms-2">{{
-              watchCount
-            }}</span>
-          </a>
+
+
+
+
+       
+<li class="nav-item">
+  <a routerLink="/wishlist" class="position-relative d-inline-flex align-items-center gap-2 text-decoration-none">
+    <div class="position-relative">
+      <img src="../../assets/heart.png" alt="wishlist" class="wishlist-icon"/>
+      <span class="position-absolute top-0  start-50 translate-middle badge  rounded-pill  text-dark bg-light" 
+            style="margin-top: -5px; margin-left: -10px;">
+        {{ watchCount }}
+      </span>
+    </div>
+    <span class="text-white fw-bold">WatchList</span>
+  </a>
+</li>
+        <li class="nav-item ms-2">
+          <span  (click)="signOut()"class="fw-bold" role="button">SingOut</span>
         </li>
       </ul>
     </div>
@@ -136,24 +140,24 @@
         </li>
 
         <li class="nav-item my-4">
-          <a
-            routerLink="/wishlist"
-            class="d-flex align-items-center justify-content-center gap-2 MovieLinkSide"
-          >
-            <img
-              src="../../assets/heartSide.png"
-              alt="wishlist"
-              class="wishlist-icon"
-            />
+          <a routerLink="/wishlist" 
+             class="position-relative d-flex align-items-center justify-content-center gap-2 MovieLinkSide">
+            <div class="position-relative">
+              <img src="../../assets/heartSide.png" alt="wishlist" class="wishlist-icon"/>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle"
+                    style="margin-top: -5px; margin-left: -10px;">
+                {{ watchCount }}
+              </span>
+            </div>
             <span class="text-white fw-bold">WatchList</span>
-            <span class="badge bg-light text-dark rounded-pill ms-2">{{
-              watchCount
-            }}</span>
           </a>
         </li>
         <li class="nav-item my-4">
-          <a routerLink="/register" class="navbar-brand MovieLinkSide">Sign Up</a>
+          <span  (click)="signOut()"class="fw-bold" role="button">SingOut</span>
         </li>
+
+
+       
       </ul>
     </div>
   </div>

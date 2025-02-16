@@ -75,7 +75,7 @@ export class RegisterComponent {
         error: (error) => {
           console.log(error);
 
-          this.errMessage = error.message;
+          this.errMessage = error.error.message;
           this.isLoaded = false;
         },
       });

@@ -4,7 +4,7 @@
       <div class="col-12 col-md-8 col-lg-7">
         <div class="card border-0 shadow-lg">
           <div class="card-body p-5">
-            <h1 class="text text-center mb-4 fw-bold">Register Now</h1>
+            <h1 class="text text-center text-warning mb-4 fw-bold">Register Now 🎞️</h1>
 
             <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
               <!-- Name Field -->
@@ -214,13 +214,14 @@
                 ></span>
               </button>
 
-              <p class="text-center text-muted mb-0">
+              <p class="text-center text-light mb-0">
                 Already have an account?
-                <a routerLink="/login" class="text-dark fw-bold">Login</a>
+                <a routerLink="/login" class="text-warning fw-bold">Login</a>
               </p>
             </form>
 
-            <p *ngIf="errMessage" class="alert alert-light p-1 mx-auto w-50">
+            
+            <p *ngIf="errMessage" class="alert alert-danger p-1 mt-2 mx-auto w-70">
               {{ errMessage }}
             </p>
           </div>

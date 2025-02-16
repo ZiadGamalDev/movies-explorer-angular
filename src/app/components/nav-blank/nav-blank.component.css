@@ -1,3 +1,4 @@
+/* Navbar and Logo */
 .navbar-logo {
   height: 45px;
   width: auto;
@@ -5,7 +6,7 @@
 }
 
 .navbar {
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -24,6 +25,7 @@
   border-radius: 10px;
 }
 
+/* Navigation Links */
 ul li a {
   cursor: pointer;
 }
@@ -33,16 +35,31 @@ ul li a {
   object-fit: contain;
 }
 
+/* Wishlist Styling */
 .wishlist-icon {
-  height: 20px;
-  object-fit: cover;
+  height: 25px;
+  object-fit: contain;
+  position: relative;
 }
 
+.badge {
+  font-size: 0.75rem;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
+/* Movie Link Animation */
 .MovieLink {
   position: relative;
   padding: 0;
@@ -61,8 +78,9 @@ ul li a {
 
 .MovieLink:hover::before {
   width: 90%;
-} 
+}
 
+/* Movie Link Side Animation */
 .MovieLinkSide {
   position: relative;
   padding: 0;
@@ -83,16 +101,7 @@ ul li a {
   width: 90%;
 }
 
-@media (max-width: 991px) {
-  .navbar-nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .wishlist-icon {
-    height: 25px;
-  }
-}
+/* Sidebar Styling */
 .sidebar {
   position: fixed;
   top: 0;
@@ -109,21 +118,32 @@ ul li a {
   right: 0;
 }
 
-.wishlist-icon {
-  height: 25px;
-  object-fit: contain;
-}
-
 .btn-close {
   font-size: 1.5rem;
   outline: none;
   border: none;
 }
 
+/* Media Queries */
 @media (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wishlist-icon {
+    height: 25px;
+  }
+
+  .badge {
+    min-width: 20px;
+    height: 20px;
+  }
+
   .collapse {
     display: none !important;
   }
+
   .navbar.scrolled {
     width: 100%;
     border-radius: 0;

@@ -1,0 +1,107 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-warning fixed-top"
+  [ngClass]="{ scrolled: isScrolled }"
+>
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../assets/logo.png" class="navbar-logo me-2" alt="logo" />
+    </a>
+
+    <a routerLink="/movies" class="navbar-brand MovieLink">Movies</a>
+
+    <!-- Mobile Toggle Button -->
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      (click)="toggleSidebar()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Full Menu for Large Screens -->
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <a routerLink="/register" class="navbar-brand MovieLink ">Register</a>
+        <a routerLink="/login" class="navbar-brand MovieLink">Login</a>
+        <!-- Language Selector Dropdown -->
+        <!-- <li class="nav-item dropdown mx-2">
+          <button
+            class="btn btn-light dropdown-toggle"
+            type="button"
+            id="languageDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ selectedLanguage }}
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('en-US')">English (en-US)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('es-ES')">Spanish (es-ES)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('fr-FR')">French (fr-FR)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('ar-EG')">Arabic (ar-EG)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('zh-CN')">Chinese (zh-CN)</a>
+            </li>
+          </ul>
+        </li> -->
+      </ul>
+    </div>
+
+    <!-- Sidebar for Small Screens -->
+    <div
+      [ngClass]="{ 'show-sidebar': isSidebarOpen }"
+      class="sidebar bg-warning"
+    >
+      <button
+        type="button"
+        class="btn-close bg-light ms-auto mt-2"
+        (click)="toggleSidebar()"
+        aria-label="Close"
+      ></button>
+      <ul class="navbar-nav mt-4 text-center">
+        <li class="nav-item my-4">
+          <a routerLink="/register" class="MovieLinkSide text-white fw-bold">Register</a>
+        </li>
+
+<!--         
+        <li class="nav-item dropdown my-2">
+          <button
+            class="btn btn-light dropdown-toggle w-100"
+            type="button"
+            id="languageDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ selectedLanguage }}
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('en-US')">English (en-US)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('es-ES')">Spanish (es-ES)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('fr-FR')">French (fr-FR)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('ar-EG')">Arabic (ar-EG)</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="changeLanguage('zh-CN')">Chinese (zh-CN)</a>
+            </li>
+          </ul>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

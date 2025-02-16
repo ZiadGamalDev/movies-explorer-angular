@@ -1,0 +1,115 @@
+<section class="main min-vh-100 d-flex align-items-center py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
+          <div class="card border-0 shadow-lg">
+            <div class="card-body p-5">
+              <h1 class="text text-center mb-4 fw-bold  text-warning">Welcome back 😊 </h1>
+  
+              <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
+               
+                <!-- Email Field -->
+                <div class="mb-4">
+                  <label for="email" class="form-label fw-medium">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light">
+                      <i class="bi bi-envelope"></i>
+                    </span>
+                    <input
+                      formControlName="email"
+                      type="email"
+                      class="form-control form-control-lg bg-dark-subtle"
+                      id="email"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                      loginForm.get('email')?.errors &&
+                      loginForm.get('email')?.touched
+                    "
+                    class="alert alert-light mt-2 py-2 small"
+                  >
+                    <p
+                      class="mb-0"
+                      *ngIf="loginForm.get('email')?.getError('required')"
+                    >
+                      Email is required
+                    </p>
+                    <p
+                      class="mb-0"
+                      *ngIf="loginForm.get('email')?.getError('email')"
+                    >
+                      Please enter a valid email address
+                    </p>
+                  </div>
+                </div>
+  
+                <!-- Password Field -->
+                <div class="mb-4">
+                  <label for="password" class="form-label fw-medium"
+                    >Password</label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text bg-light">
+                      <i class="bi bi-lock"></i>
+                    </span>
+                    <input
+                      formControlName="password"
+                      type="password"
+                      class="form-control form-control-lg bg-dark-subtle"
+                      id="password"
+                      placeholder="Enter your password"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                      loginForm.get('password')?.errors &&
+                      loginForm.get('password')?.touched
+                    "
+                    class="alert alert-light mt-2 py-2 small"
+                  >
+                    <p
+                      class="mb-0"
+                      *ngIf="loginForm.get('password')?.getError('required')"
+                    >
+                      Password is required
+                    </p>
+                    <p
+                      class="mb-0"
+                      *ngIf="loginForm.get('password')?.getError('pattern')"
+                    >
+                      Password must be at least 6 characters and contain only
+                      letters, numbers, or _
+                    </p>
+                  </div>
+                </div>
+  
+                
+                
+                <button
+                  [disabled]="loginForm.invalid"
+                  class="btn btn-outline-warning btn-lg w-100 mb-3"
+                >
+               Login
+                  <span *ngIf="isLoaded" class="mx-1"
+                    ><i class="fas fa-spin fa-spinner"></i
+                  ></span>
+                </button>
+  
+                <p class="text-center text-light mb-0">
+                  Don't have an account?
+                  <a routerLink="/register" class="text-warning fw-bold">Sign Up</a>
+                </p>
+              </form>
+  
+              <p *ngIf="errMessage" class="alert alert-danger p-1 mt-2 mx-auto w-70">
+                {{ errMessage }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
