@@ -17,11 +17,7 @@
   }
   
   .navbar.scrolled {
-    top: 10px;
     height: 80px;
-    width: 70%;
-    left: 16.5%;
-    border-radius: 10px;
   }
   
   ul li a {

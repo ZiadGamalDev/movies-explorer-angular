@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import {  Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { WishlistService } from '../../core/service/wishlist.service';
 import { LanguagesService } from '../../core/service/languages.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],  
-  templateUrl: './nav-blank.component.html',  
-  styleUrl: './nav-blank.component.css'
+  imports: [CommonModule, RouterLink],
+  templateUrl: './nav-blank.component.html',
+  styleUrl: './nav-blank.component.css',
 })
 export class NavBlankComponent {
   watchCount = 0;
@@ -19,13 +19,11 @@ export class NavBlankComponent {
   constructor(
     private wishService: WishlistService,
     private languageService: LanguagesService,
-    private _router:Router
+    private _router: Router
   ) {}
 
-
-
   ngOnInit(): void {
-    console.log('navbar')
+    console.log('navbar');
     this.wishService.watchListCount$.subscribe(
       (count) => (this.watchCount = count)
     );
@@ -60,12 +58,8 @@ export class NavBlankComponent {
     return languages[code] || 'English';
   }
 
-
-signOut():void{
-
-localStorage.removeItem('etoken');
-this._router.navigate(['/login'])
-
-}
-
+  signOut(): void {
+    localStorage.removeItem('etoken');
+    this._router.navigate(['/login']);
+  }
 }
