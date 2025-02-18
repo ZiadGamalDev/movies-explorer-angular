@@ -19,7 +19,8 @@ export class NavBlankComponent {
   constructor(
     private wishService: WishlistService,
     private languageService: LanguagesService,
-    private _router: Router
+    private _router: Router,
+    private _WishListServise:WishlistService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +61,8 @@ export class NavBlankComponent {
 
   signOut(): void {
     localStorage.removeItem('etoken');
+    this._WishListServise.clearWishlistOnLogout()
     this._router.navigate(['/login']);
+    
   }
 }
