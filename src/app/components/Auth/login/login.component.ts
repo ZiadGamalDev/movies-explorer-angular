@@ -12,6 +12,7 @@ import {
 import { AuthService } from '../../../core/service/auth.service';
 import { Route, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { WishlistService } from '../../../core/service/wishlist.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
 
 
 
-  constructor(private _authService: AuthService, private _router: Router) {}
+  constructor(private _authService: AuthService, private _router: Router, private _WishListService:WishlistService) {}
   
     errMessage: string = '';
     isLoaded: boolean = false;
@@ -54,6 +55,8 @@ export class LoginComponent {
               this._authService.decodeUser()
               this.isLoaded = false;
               this._router.navigate(['/home']);
+              this._WishListService.loadUserWishlist()
+
             }
            
           },
@@ -67,5 +70,7 @@ export class LoginComponent {
         });
       }
     }
+
+
 
 }
