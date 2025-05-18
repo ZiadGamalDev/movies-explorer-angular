@@ -1,59 +1,67 @@
-# MoviesITI
+# Fasel 🎥
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+**Fasel** is a modern movie browsing web application built using **Angular 19**, powered by [TMDB](https://www.themoviedb.org/) APIs. Users can explore now playing movies, view details and recommendations, manage their wishlist, and search across a wide catalog.
 
-## Development server
+## 🔥 Features
 
-To start a local development server, run:
+- View list of trending / now-playing movies
+- Detailed movie pages with overview, rating, and recommendations
+- Add/remove movies from wishlist with real-time feedback
+- Wishlist page with persistent state
+- Search movies by name
+- Paginate through results
+- 404 page for invalid routes
+- Scroll-to-top on long pages
 
-```bash
-ng serve
-```
+## 📄 Project Requirements Highlights
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+From the official ITI Angular course project brief:
 
-## Code scaffolding
+- Consume TMDB APIs for listing, details, recommendations, and search
+- Use Angular services, components, interfaces, routing, and pipes
+- Optional: i18n with support for RTL languages like Arabic
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Full brief available in [`movie-app-doc.pdf`](public/movie-app-doc.pdf)
 
-```bash
-ng generate component component-name
-```
+## 🌐 Live Demo
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- [fasel.vercel.app](https://fasel.vercel.app/home)
 
-```bash
-ng generate --help
-```
+## 🖼️ Screenshots
 
-## Building
+Click any image to view full size.
 
-To build the project run:
+<table>
+  <tr>
+    <td align="center">
+      <a href="public/screenshots/home-page.jpeg">
+        <img src="public/screenshots/home-page.jpeg" alt="Home Page" width="250"/>
+      </a><br/>Home Page
+    </td>
+    <td align="center">
+      <a href="public/screenshots/movies-page.jpeg">
+        <img src="public/screenshots/movies-page.jpeg" alt="Movies Page" width="250"/>
+      </a><br/>Movies Page
+    </td>
+    <td align="center">
+      <a href="public/screenshots/movie-details-page.jpeg">
+        <img src="public/screenshots/movie-details-page.jpeg" alt="Movie Details Page" width="250"/>
+      </a><br/>Movie Details
+      <br/><br/>
+      <a href="public/screenshots/register.jpeg">
+        <img src="public/screenshots/register.jpeg" alt="Register" width="250"/>
+      </a><br/>Register
+    </td>
+  </tr>
+</table>
 
-```bash
-ng build
-```
+## ⚙️ Technologies Used
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Angular 19
+- TypeScript
+- HTML5, CSS3
+- TMDB API
 
-## Running unit tests
+## 🧠 Personal Note
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project was built as part of the **Angular course** at the **Information Technology Institute (ITI)**, a prestigious tech institute under Egypt's Ministry of Communications. While it was a team effort, I didn't contribute heavily to the frontend development — my main focus remains on backend development (Laravel, Node.js, and backend systems in general). I still wanted to share it as part of my learning journey and collaborative experience.
